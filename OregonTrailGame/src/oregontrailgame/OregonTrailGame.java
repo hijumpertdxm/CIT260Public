@@ -5,11 +5,14 @@
  */
 package oregontrailgame;
 
+import byui.cit260.oregonTrail.model.Animals;
 import byui.cit260.oregonTrail.model.HealthConditions;
 import byui.cit260.oregonTrail.model.Inventory;
 import byui.cit260.oregonTrail.model.Location;
 import byui.cit260.oregonTrail.model.PartyHealth;
 import byui.cit260.oregonTrail.model.Player;
+import byui.cit260.oregonTrail.model.Status;
+import byui.cit260.oregonTrail.model.Weather;
 
 /**
  *
@@ -61,7 +64,31 @@ public class OregonTrailGame {
         System.out.println(playerOne.getName() + " " + HealthConditions.BrokeBone.getMessage());
         System.out.println("Status of " + playerOne.getName() + ": " + HealthConditions.BrokeBone.getCondition());
         
-
+        //Testing Weather
+        System.out.println(Weather.Snowy.toString());
+        //Adding it to player sentences
+        System.out.println("The weather is: " + Weather.Snowy.getName());
+        
+        //Testing Animals
+        Animals animalOne = new Animals();
+        
+        animalOne.setName("Bear");
+        animalOne.setFood(75);
+        animalOne.setBaseRate(.5);
+        animalOne.setBaseChance(.4);
+        
+        System.out.println(animalOne.toString());
+        
+        //Testing Status
+        Status statusOne = new Status();
+        
+        statusOne.setRation("Filling");
+        statusOne.setPace("Strenuous");
+        statusOne.setMoney(1600);
+        statusOne.setPartyhealth(PartyHealth.Good);
+        statusOne.setWeather(Weather.Snowy);
+        
+        System.out.println(statusOne.toString());
     }
     
 }
