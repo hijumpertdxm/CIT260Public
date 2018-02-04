@@ -5,6 +5,7 @@
  */
 package oregontrailgame;
 
+import byui.cit260.oregonTrail.model.HealthConditions;
 import byui.cit260.oregonTrail.model.Inventory;
 import byui.cit260.oregonTrail.model.Location;
 import byui.cit260.oregonTrail.model.PartyHealth;
@@ -53,6 +54,12 @@ public class OregonTrailGame {
         locationOne.setType("Outpost");
         
         System.out.println(locationOne.toString());
+        
+        //Testing HealthConditions
+        System.out.println(HealthConditions.BrokeBone.toString());
+        //Adding it to player sentences
+        System.out.println(playerOne.getName() + " " + HealthConditions.BrokeBone.getMessage());
+        System.out.println("Status of " + playerOne.getName() + ": " + HealthConditions.BrokeBone.getCondition());
         
 
     }
