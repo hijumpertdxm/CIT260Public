@@ -17,7 +17,7 @@ public class InventoryControl {
             return -1;
         }
         
-        if(sumInventoryBase < 238 || sumInventoryBase > 7050){
+        if(sumInventoryBase < 237 || sumInventoryBase > 7050){
             return -1;
         }
         

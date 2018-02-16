@@ -44,11 +44,11 @@ public class InventoryControlTest {
     public void testSunInventoryBaseLowerBound(){
         
         //Test case 2 - failing sumInventoryBase
-        System.out.println("\tTest case 2");
+        System.out.println("\tTest case 2: Failing sumInventoryBase lower bound");
         
         //defining the input variables
         double locationMultiplier = 1.0;
-        double sumInventoryBase = 237;
+        double sumInventoryBase = 236;
         
         double expResult = -1.0; //define expected output variable
         
