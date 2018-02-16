@@ -21,7 +21,7 @@ public class InventoryControlTest {
      * Test of calcInventoryValue method, of class InventoryControl.
      */
     @Test
-    public void testCalcInventoryValue() {
+    public void tesLocationMultiplierLowerBound() {
         System.out.println("calcInventoryValue");
         
         //Test case 1 - failing locationMultiplier
@@ -38,33 +38,41 @@ public class InventoryControlTest {
         
         //testing to see if the result returned equals the expected result
         assertEquals(expResult, result, 0.0001);
+    }
+    
+    @Test
+    public void testSunInventoryBaseLowerBound(){
         
         //Test case 2 - failing sumInventoryBase
         System.out.println("\tTest case 2");
         
         //defining the input variables
-        locationMultiplier = 1.0;
-        sumInventoryBase = 237;
+        double locationMultiplier = 1.0;
+        double sumInventoryBase = 237;
         
-        expResult = -1.0; //define expected output variable
+        double expResult = -1.0; //define expected output variable
         
         //calling method
-        result = InventoryControl.calcInventoryValue(locationMultiplier, sumInventoryBase);
+        double result = InventoryControl.calcInventoryValue(locationMultiplier, sumInventoryBase);
         
         //testing to see if the result returned equals the expected result
         assertEquals(expResult, result, 0.0001);
+    }
+    
+    @Test
+    public void testCalcInventoryValueSuccess(){
         
         //Test case 3 - successful
         System.out.println("\tTest case 3");
         
         //defining the input variables
-        locationMultiplier = 2.3;
-        sumInventoryBase = 400;
+        double locationMultiplier = 2.3;
+        double sumInventoryBase = 400;
         
-        expResult = 920.0; //define expected output variable
+        double expResult = 920.0; //define expected output variable
         
         //calling method
-        result = InventoryControl.calcInventoryValue(locationMultiplier, sumInventoryBase);
+        double result = InventoryControl.calcInventoryValue(locationMultiplier, sumInventoryBase);
         
         //testing to see if the result returned equals the expected result
         assertEquals(expResult, result, 0.0001);
