@@ -6,6 +6,7 @@
 package byui.cit260.oregonTrail.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -19,8 +20,17 @@ public class Game implements Serializable{
     //private Status status;
     private Inventory inventory;
     private Player player;
+    private int[] rainyDays;
 
     public Game() {
+    }
+
+    public int[] getRainyDays() {
+        return rainyDays;
+    }
+
+    public void setRainyDays(int[] rainyDays) {
+        this.rainyDays = rainyDays;
     }
 
     
@@ -66,12 +76,12 @@ public class Game implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 41 * hash + (int) (Double.doubleToLongBits(this.mileMarker) ^ (Double.doubleToLongBits(this.mileMarker) >>> 32));
-        hash = 41 * hash + this.daysTraveled;
-        //hash = 41 * hash + Objects.hashCode(this.status);
-        hash = 41 * hash + Objects.hashCode(this.inventory);
-        hash = 41 * hash + Objects.hashCode(this.player);
+        int hash = 3;
+        hash = 43 * hash + (int) (Double.doubleToLongBits(this.mileMarker) ^ (Double.doubleToLongBits(this.mileMarker) >>> 32));
+        hash = 43 * hash + this.daysTraveled;
+        hash = 43 * hash + Objects.hashCode(this.inventory);
+        hash = 43 * hash + Objects.hashCode(this.player);
+        hash = 43 * hash + Arrays.hashCode(this.rainyDays);
         return hash;
     }
 
@@ -93,13 +103,13 @@ public class Game implements Serializable{
         if (this.daysTraveled != other.daysTraveled) {
             return false;
         }
-//        if (!Objects.equals(this.status, other.status)) {
-//            return false;
-//        }
         if (!Objects.equals(this.inventory, other.inventory)) {
             return false;
         }
         if (!Objects.equals(this.player, other.player)) {
+            return false;
+        }
+        if (!Arrays.equals(this.rainyDays, other.rainyDays)) {
             return false;
         }
         return true;
@@ -107,10 +117,8 @@ public class Game implements Serializable{
 
     @Override
     public String toString() {
-        return "Game{" + "mileMarker=" + mileMarker + ", daysTraveled=" + daysTraveled + ", inventory=" + inventory + ", player=" + player + '}';
+        return "Game{" + "mileMarker=" + mileMarker + ", daysTraveled=" + daysTraveled + ", inventory=" + inventory + ", player=" + player + ", rainyDays=" + rainyDays + '}';
     }
-
-    
     
     
 }
