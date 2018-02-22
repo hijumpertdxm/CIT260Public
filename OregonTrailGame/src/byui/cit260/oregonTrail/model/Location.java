@@ -15,10 +15,10 @@ import java.util.Objects;
  */
 public class Location implements Serializable{
         //class instance variables
-        public String name;
-        public String type;
-        public double mileMarker;
-        public int dateVisted;
+        private String name;
+        private String type;
+        private double mileMarker;
+        private int dateVisted;
         private Inventory inventory;
 
     public Location() {

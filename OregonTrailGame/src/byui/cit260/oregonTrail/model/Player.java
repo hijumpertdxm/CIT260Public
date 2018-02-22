@@ -15,9 +15,9 @@ import java.util.Objects;
  */
 public class Player implements Serializable{
     //class instance variables
-    public String name;
-    public double highScore;
-    public int occupation;
+    private String name;
+    private double highScore;
+    private int occupation;
     private ArrayList<Game> games = new ArrayList<Game>();
 
     public Player() {

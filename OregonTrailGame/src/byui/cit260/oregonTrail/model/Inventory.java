@@ -15,9 +15,9 @@ import java.util.Objects;
  */
 public class Inventory implements Serializable{
         //class instance variables
-        public String name;
-        public double quantity;
-        public double basePrice;
+        private String name;
+        private double quantity;
+        private double basePrice;
 
     public Inventory() {
     }
