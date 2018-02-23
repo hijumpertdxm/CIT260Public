@@ -5,6 +5,8 @@
  */
 package byui.cit260.oregonTrail.control;
 
+import byui.cit260.oregonTrail.model.Player;
+
 /**
  *
  * @author Roller
@@ -42,6 +44,18 @@ public class GameControl {
                 
         return finalScore;
         
+    }
+    
+    public static Player savePlayer(String name){
+        if(name == null || name.length() < 1){
+            return null;
+        }
+        
+        Player player = new Player();
+        player.setName(name);
+        
+        
+        return player;
     }
     
 }

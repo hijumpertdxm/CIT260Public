@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package byui.cit260.oregonTrail.view;
+import byui.cit260.oregonTrail.control.GameControl;
+import byui.cit260.oregonTrail.model.Player;
 import java.util.Scanner;
 
 /**
@@ -32,7 +34,7 @@ public class StartProgramView {
         
         boolean valid = false;
         while(valid == false){
-            System.out.println("What do you want to enter? ");
+            System.out.println("Please enter the player's name below:");
             Scanner inString = new Scanner(System.in);
             
             //user string input
@@ -51,8 +53,22 @@ public class StartProgramView {
     }
     
     private boolean doAction(String[] inputs){
-        System.out.println("**** doAction() called ****");
-        System.out.println("\tinputs = " + inputs[0]);
+        
+        String playersName = inputs[0];
+        Player player = GameControl.savePlayer(playersName);
+        
+        if(player == null){
+            System.out.println("Could not create the player. Please enter a different name.");
+            return false;
+        }
+        
+        System.out.println("=====================================================");
+        System.out.println("Welcome to the game " + playersName);
+        System.out.println("We hope you have a lot of fun!");
+        System.out.println("=====================================================");
+        
+        MainMenuView mainMenuView = new MainMenuView();
+        mainMenuView.displayMainMenuView();
         
         return true;
     }
