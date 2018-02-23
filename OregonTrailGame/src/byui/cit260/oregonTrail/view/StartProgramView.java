@@ -35,10 +35,10 @@ public class StartProgramView {
         boolean valid = false;
         while(valid == false){
             System.out.println("Please enter the player's name below:");
-            Scanner inString = new Scanner(System.in);
+            Scanner scanner = new Scanner(System.in);
             
             //user string input
-            String userInput = inString.nextLine().trim();
+            String userInput = scanner.nextLine().trim();
             
             if(userInput.length() < 1){
                 System.out.println("You must enter a non-blank value");
