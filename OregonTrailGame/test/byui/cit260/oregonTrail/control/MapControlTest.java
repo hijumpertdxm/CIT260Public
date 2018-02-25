@@ -38,7 +38,7 @@ public class MapControlTest {
         double result = MapControl.calcRiverChance(depth, width, rainyDays);
         
         //testing to see if the result returned equals the expected result
-        assertEquals(expResult, result, 0.0);
+        assertEquals(expResult, result, 0.0);            
     }
     
     @Test

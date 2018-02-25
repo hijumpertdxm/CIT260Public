@@ -5,17 +5,15 @@
  */
 package byui.cit260.oregonTrail.view;
 
-import byui.cit260.oregonTrail.control.GameControl;
 import java.util.Scanner;
-import oregontrailgame.OregonTrailGame;
 
 /**
  *
- * @author SysAdmin
+ * @author Roller
  */
-class MainMenuView {
-    
-    public void displayMainMenuView(){
+public class HelpMenuView {
+
+    public void displayHelpMenuView() {
         boolean endView = false;
         do{
             String[] inputs = this.getInputs();
@@ -31,12 +29,12 @@ class MainMenuView {
         String[] inputs = new String[1];
         
         System.out.println("=====================================================");
-        System.out.println("Main Menu");
+        System.out.println("Help Menu");
         System.out.println("=====================================================");
-        System.out.println("N - Start new game");
-        System.out.println("R - Restart existing game");
-        System.out.println("H - Get help on how to play the game");
-        System.out.println("E - Exit");
+        System.out.println("G - What is the goal of the game?");
+        System.out.println("M - How to move");
+        System.out.println("R - Getting resources");
+        System.out.println("Q - Quit");
         System.out.println("=====================================================");
         
         boolean valid = false;
@@ -65,20 +63,17 @@ class MainMenuView {
         String menuItem = inputs[0].toUpperCase();
         
         switch(menuItem){
-            case "N":
-                this.startNewGame();
+            case "G":
+                this.getGoalOfGame();
+                break;
+                
+            case "M":
+                this.getHowToMove();
                 break;
                 
             case "R":
-                this.restartGame();
+                this.getGettingResources();
                 break;
-                
-            case "H":
-                this.getHelp();
-                break;
-                
-            case "E":
-                return true;
                 
             default:
               System.out.println("Invalid menu item");
@@ -87,22 +82,16 @@ class MainMenuView {
         return false;
     }
 
-    private void startNewGame() {
-        //create new game
-        GameControl.createNewGame(OregonTrailGame.getPlayer());
-        
-        GameMenuView gameMenuView = new GameMenuView();
-        gameMenuView.displayGameMenuView();
+    private void getGoalOfGame() {
+        System.out.println("The goal of the game is to reach the end of the trail with as many party members alive and as much inventory as possible.\n");
     }
 
-    private void restartGame() {
-        StartExistingGameView startExistingGameView = new StartExistingGameView();
-        startExistingGameView.displayStartExistingGameView();
+    private void getGettingResources() {
+        System.out.println("While out on the trail you can hunt and get food. Otherwise you should buy all of your supplies at the beginning of the game.\n");
     }
 
-    private void getHelp() {
-        HelpMenuView helpMenuView = new HelpMenuView();
-        helpMenuView.displayHelpMenuView();
+    private void getHowToMove() {
+        System.out.println("Each new day you move X amount of miles based on the pace that you set.\n");
     }
     
 }

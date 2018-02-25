@@ -26,12 +26,13 @@ public class InventoryControl {
         
         return inventoryValue;
     }
-        public static double calcSumInventoryBase(double basePriceOxen, double numberOxen, double basePriceWheels, double numberWheels, 
+    
+    public static double calcSumInventoryBase(double basePriceOxen, double numberOxen, double basePriceWheels, double numberWheels, 
                                                double basePriceAxles, double numberAxles, double basePriceTongues, double numberTongues,
                                                double basePriceClothes, double numberClothes, double basePriceAmmunition, double numberAmmunition,
                                                double basePriceFood, double numberFood){
         
-            //Check each item for a value error
+        //Check each item for a value error
         if(basePriceOxen < 20 || basePriceOxen > 20){
             return -1;
         }
@@ -93,16 +94,17 @@ public class InventoryControl {
         if(numberFood < 0 || numberFood > 2000){
             return -1;
         }
-                //calculate the value of each item type in inventory
-                double oxenValue = basePriceOxen * numberOxen;
-                double wheelsValue = basePriceWheels * numberWheels;
-                double axlesValue = basePriceAxles * numberAxles;
-                double tonguesValue = basePriceTongues * numberTongues;
-                double clothesValue = basePriceClothes * numberClothes;
-                double ammunitionValue = basePriceAmmunition * numberAmmunition;
-                double foodValue = basePriceFood * numberFood;
+        
+        //calculate the value of each item type in inventory
+        double oxenValue = basePriceOxen * numberOxen;
+        double wheelsValue = basePriceWheels * numberWheels;
+        double axlesValue = basePriceAxles * numberAxles;
+        double tonguesValue = basePriceTongues * numberTongues;
+        double clothesValue = basePriceClothes * numberClothes;
+        double ammunitionValue = basePriceAmmunition * numberAmmunition;
+        double foodValue = basePriceFood * numberFood;
 
-                //calculate the value of the total base inventory
+        //calculate the value of the total base inventory
         double sumInventoryBase = oxenValue + wheelsValue + axlesValue + tonguesValue + clothesValue + ammunitionValue + foodValue;
         return sumInventoryBase;
 }
