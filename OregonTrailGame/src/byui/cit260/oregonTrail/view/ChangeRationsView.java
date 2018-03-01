@@ -6,23 +6,24 @@
 package byui.cit260.oregonTrail.view;
 
 import byui.cit260.oregonTrail.control.GameControl;
+import byui.cit260.oregonTrail.control.StatusControl;
 import java.util.Scanner;
 import oregontrailgame.OregonTrailGame;
-
 /**
  *
  * @author ayami
  */
-public class SaveQuitMenuView {
-    public void displaySaveQuitMenuView(){
+public class ChangeRationsView {
+    public void displayChangeRationsView(){
         boolean endView = false;
         do{
             String[] inputs = this.getInputs();
-            if(inputs.length < 1){
+            if((inputs.length < 1)  || (inputs[0].toUpperCase().equals("Q"))){
                 return;
             }
             endView = doAction(inputs);
         }while(endView != true);
+        
     }
     
     private String[] getInputs(){
@@ -30,9 +31,11 @@ public class SaveQuitMenuView {
         String[] inputs = new String[1];
         
         System.out.println("==========The Oregon Trail==========");
-        System.out.println("1. Save and Quit");
-        System.out.println("2. Quit");
-        System.out.println("C. Continue");
+        System.out.println("You can change food rations as follows: \n");
+        System.out.println("1. Filling - Large and generous meals.");
+        System.out.println("2. Meager - Small, but adequate meals.");
+        System.out.println("3. Bare bones - Very small insufficient meals.");
+        System.out.println("C. Continue the game");
         System.out.println("-----What is your choice?");
         System.out.println("====================================");
         
@@ -64,12 +67,16 @@ public class SaveQuitMenuView {
         
         switch(menuItem){
             case "1":
-                this.saveAndQuitGame();
+                this.changeRationsFilling();
                 break;
                 
             case "2":
-                this.quitGame();
+                this.changeRationsMeager();
                 break;
+                
+            case "3":
+                this.changeRationsBones();
+                break;    
                 
             case "C":
                 this.continueGame();
@@ -82,14 +89,19 @@ public class SaveQuitMenuView {
         return false;
     }
     
-    private void saveAndQuitGame() {
-        //Save game and quit
-        System.out.println("The game has been saved");
+    private void changeRationsFilling() {
+        //Change first rations parameter
+        System.out.println("The food rations have been changed to Filling");
     }
 
-    private void quitGame() {
-        //Exit 
-        System.exit(0);
+     private void changeRationsMeager() {
+        //Change second rations parameter
+        System.out.println("The food rations have been changed to Meager");
+    }
+     
+      private void changeRationsBones() {
+        //Change third rations parameter
+        System.out.println("The food rations have been changed to Bare Bones");
     }
 
     private void continueGame() {

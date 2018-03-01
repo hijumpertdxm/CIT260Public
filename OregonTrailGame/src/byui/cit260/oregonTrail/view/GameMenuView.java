@@ -127,7 +127,9 @@ public class GameMenuView {
     }
 
     private void changeRations() {
-        System.out.println("changeRations() was called from the game menu");
+        //Go to Change Rations View
+        ChangeRationsView changeRationsView = new ChangeRationsView();
+        changeRationsView.displayChangeRationsView();
     }
 
     private void rest() {
