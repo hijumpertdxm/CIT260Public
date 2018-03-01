@@ -103,28 +103,22 @@ public class ChooseMonthToStartView {
 
     
     private void March() {
-        
-    }
-
-    private void leave() {
-    }
-
-    private void July() {
-        
-    }
-
-    private void June() {
-       
+       System.out.println("You have selected the month of March");
+    }    
+    private void April() {
+       System.out.println("You have selected the month of April");
     }
 
     private void May() {
-       
+       System.out.println("You have selected the month of May");
     }
-
-    private void April() {
-     
+    private void June() {
+       System.out.println("You have selected the month of June");
     }
-
-
-
+    private void July() {
+     System.out.println("You have selected the month of July");   
+    }
+     private void leave() {
+        System.out.println("You have selected when should I leave");
+    }
 }
