@@ -11,9 +11,8 @@ import java.util.Scanner;
  *
  * @author Randy ther Master
  */
-public class ChangePaceView {
+public class ChangePaceView {      
     
-    public class ChangePaceView {
     public void displayChangePaceView(){
         boolean endView = false;
         do{
@@ -107,9 +106,4 @@ public class ChangePaceView {
          System.out.println("The pace has been changed to gruelling");      
         }
     
-    
-    
-    
-    
-    
-}
+   }
