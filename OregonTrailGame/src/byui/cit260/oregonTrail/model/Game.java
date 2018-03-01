@@ -17,7 +17,7 @@ public class Game implements Serializable{
     //class instance variables
     private double mileMarker;
     private int daysTraveled;
-    //private Status status;
+    private Status status;
     private Inventory inventory;
     private Player player;
     private int[] rainyDays;
@@ -50,13 +50,13 @@ public class Game implements Serializable{
         this.daysTraveled = daysTraveled;
     }
 
-//    public Status getStatus() {
-//        return status;
-//    }
-//
-//    public void setStatus(Status status) {
-//        this.status = status;
-//    }
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 
     public Inventory getInventory() {
         return inventory;
@@ -77,11 +77,12 @@ public class Game implements Serializable{
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 43 * hash + (int) (Double.doubleToLongBits(this.mileMarker) ^ (Double.doubleToLongBits(this.mileMarker) >>> 32));
-        hash = 43 * hash + this.daysTraveled;
-        hash = 43 * hash + Objects.hashCode(this.inventory);
-        hash = 43 * hash + Objects.hashCode(this.player);
-        hash = 43 * hash + Arrays.hashCode(this.rainyDays);
+        hash = 11 * hash + (int) (Double.doubleToLongBits(this.mileMarker) ^ (Double.doubleToLongBits(this.mileMarker) >>> 32));
+        hash = 11 * hash + this.daysTraveled;
+        hash = 11 * hash + Objects.hashCode(this.status);
+        hash = 11 * hash + Objects.hashCode(this.inventory);
+        hash = 11 * hash + Objects.hashCode(this.player);
+        hash = 11 * hash + Arrays.hashCode(this.rainyDays);
         return hash;
     }
 
@@ -103,6 +104,9 @@ public class Game implements Serializable{
         if (this.daysTraveled != other.daysTraveled) {
             return false;
         }
+        if (!Objects.equals(this.status, other.status)) {
+            return false;
+        }
         if (!Objects.equals(this.inventory, other.inventory)) {
             return false;
         }
@@ -117,8 +121,9 @@ public class Game implements Serializable{
 
     @Override
     public String toString() {
-        return "Game{" + "mileMarker=" + mileMarker + ", daysTraveled=" + daysTraveled + ", inventory=" + inventory + ", player=" + player + ", rainyDays=" + rainyDays + '}';
+        return "Game{" + "mileMarker=" + mileMarker + ", daysTraveled=" + daysTraveled + ", status=" + status + ", inventory=" + inventory + ", player=" + player + ", rainyDays=" + rainyDays + '}';
     }
+
     
     
 }
