@@ -53,7 +53,9 @@ public class StopToRestView {
     private boolean doAction(){
         
         //Calling this with a zero means stopping to rest
-        GameControl.progressOneDay(0);
+        
+        // TODO : game variables need to be setup before this happens
+        //GameControl.progressOneDay(0);
         
         return true;
     }
