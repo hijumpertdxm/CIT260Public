@@ -6,6 +6,7 @@
 package byui.cit260.oregonTrail.view;
 
 import java.util.Scanner;
+import oregontrailgame.OregonTrailGame;
 
 /**
  *
@@ -32,12 +33,12 @@ public class GameMenuView {
         System.out.println("=====================================================");
         System.out.println("The Oregon Trail");
         System.out.println("=====================================================");
-        System.out.println("Location: ");
+        System.out.println("Location: "); //Need to setup locations first
         System.out.println("Date: ");
         System.out.println("Weather: ");
-        System.out.println("Health: ");
-        System.out.println("Pace: ");
-        System.out.println("Rations: \n");
+        System.out.println("Health: " ); //+ OregonTrailGame.getCurrentGame().getStatus().getPartyhealth());
+        System.out.println("Pace: " ); //+ OregonTrailGame.getCurrentGame().getStatus().getPace());
+        System.out.println("Rations: \n" ); //+ OregonTrailGame.getCurrentGame().getStatus().getRation() + "\n");
         System.out.println("1. Continue on trail");
         System.out.println("2. Check supplies");
         System.out.println("3. Display the map");
@@ -131,7 +132,8 @@ public class GameMenuView {
     }
 
     private void rest() {
-        System.out.println("rest() was called from the game menu");
+        StopToRestView stopToRestView = new StopToRestView();
+        stopToRestView.displayStopToRestView();
     }
 
     private void hunt() {
