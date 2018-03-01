@@ -90,6 +90,7 @@ class MainMenuView {
     private void startNewGame() {
         //create new game
         GameControl.createNewGame(OregonTrailGame.getPlayer());
+        //GameControl.gameInitialization();
         
         GameMenuView gameMenuView = new GameMenuView();
         gameMenuView.displayGameMenuView();
