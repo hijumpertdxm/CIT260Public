@@ -5,6 +5,8 @@
  */
 package byui.cit260.oregonTrail.view;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Randy ther Master
@@ -13,8 +15,8 @@ public abstract class View implements ViewInterface{
  
     protected String displayMessage;
     
-    public View();{
-    
+    public View() {
+  
 }
     public View(String message) {
         this.displayMessage = message;
@@ -25,20 +27,45 @@ public abstract class View implements ViewInterface{
         boolean done = false;
         do{
             // prompt for and get players name
-            String vale = this.getInput();
+            String value = this.getInput();
             if (value.toUpperCase().equals("Q")) // user wants to quit
                 return; // exit the view
           //do the requested action and display the exit view
           done = this.doAction(value);
         }
-        while (!done);
+        while (!done); //exite the view when done == true
     }
 
     @Override
-    public abstract String getInput();
+    public String getInput() {
+        Scanner keyboard = new Scanner(System.in);
+        boolean valid = false;
+        String value = null;
+        
+        //while a valid name has not bee retrieved
+        while (!valid) {
+            
+            // prompt for the player's name
+            System.out.println("\n" + this.displayMessage);
+            
+            // get the value entered from the keyboard
+            value = keyboard.nextLine();
+            value = value.trim();
+            
+            if (value.length() < 1) { //blank value entered
+                System.out.println("\n*** You must enter a value *** ");
+                continue;
+            }
+            
+            break;
+        }
+        
+        return value; //return the name
+    }
 
-    @Override
-    public abstract void display();
+
+    //@Override
+    //public abstract void display();
     
    
     

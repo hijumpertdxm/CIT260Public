@@ -13,58 +13,27 @@ import oregontrailgame.OregonTrailGame;
  *
  * @author SysAdmin
  */
-class MainMenuView {
+public class MainMenuView extends View {
     
-    public void displayMainMenuView(){
-        boolean endView = false;
-        do{
-            String[] inputs = this.getInputs();
-            if((inputs.length < 1) || (inputs[0].toUpperCase().equals("Q"))){
-                return;
-            }
-            endView = doAction(inputs);
-        }while(endView != true);
-    }
-    
-    private String[] getInputs(){
-        
-        String[] inputs = new String[1];
-        
-        System.out.println("=====================================================");
-        System.out.println("Main Menu");
-        System.out.println("=====================================================");
-        System.out.println("N - Start new game");
-        System.out.println("R - Restart existing game");
-        System.out.println("H - Get help on how to play the game");
-        System.out.println("E - Exit");
-        System.out.println("=====================================================");
-        
-        boolean valid = false;
-        while(valid == false){
-            System.out.println("Please enter the action to take below:");
-            Scanner scanner = new Scanner(System.in);
+        public MainMenuView() {
             
-            //user string input
-            String userInput = scanner.nextLine().trim();
-            
-            if(userInput.length() < 1){
-                System.out.println("You must enter a non-blank value");
-                continue;
-            }
-            
-            inputs[0] = userInput;
-            valid = true;
+            super("\n"
+                + "\n====================================================="
+                + "\n| Main Menu"
+                + "\n====================================================="
+                + "\nN - Start new game"
+                + "\nR - Restart existing game"
+                + "\nH - Get help on how to play the game"
+                + "\nE - Exit"
+                + "\n=====================================================");
         }
-        
-        return inputs;
-    }
-    
-    private boolean doAction(String[] inputs){
-        
+   
+    @Override
+    public boolean doAction(String value){
         //Set as first element and uppercase it
-        String menuItem = inputs[0].toUpperCase();
+        value = value.toUpperCase();
         
-        switch(menuItem){
+        switch(value){
             case "N":
                 this.startNewGame();
                 break;
