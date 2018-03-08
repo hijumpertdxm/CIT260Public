@@ -10,5 +10,9 @@ package byui.cit260.oregonTrail.control;
  * @author SysAdmin
  */
 public class PlayerControl {
+
+    public static void playerOccupation(int occupation) {
+        System.out.println("Eureka! Good job Edward!");
+    }
     
 }
