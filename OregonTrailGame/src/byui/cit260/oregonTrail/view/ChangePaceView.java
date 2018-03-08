@@ -5,66 +5,54 @@
  */
 package byui.cit260.oregonTrail.view;
 
-import java.util.Scanner;
 
 /**
  *
  * @author Randy ther Master
  */
-public class ChangePaceView {      
+public class ChangePaceView extends View{      
     
-    public void displayChangePaceView(){
-        boolean endView = false;
-        do{
-            String[] inputs = this.getInputs();
-            if((inputs.length < 1)  || (inputs[0].toUpperCase().equals("Q"))){
-                return;
-            }
-            endView = doAction(inputs);
-        }while(endView != true);
-        
-    }
-    
-    private String[] getInputs(){
-        
-        String[] inputs = new String[1];
-        
-        System.out.println("==========The Oregon Trail==========");
-        System.out.println("You can change pace as follows: \n");
-        System.out.println("1. Staedy");
-        System.out.println("2. Strenuou");
-        System.out.println("3. Gruelling");
-        System.out.println("C. Continue the game");
-        System.out.println("-----What is your choice?");
-        System.out.println("====================================");
-        
-        boolean valid = false;
-        while(valid == false){
-            System.out.println("Please enter the action to take below:");
-            Scanner scanner = new Scanner(System.in);
-            
-            //user string input
-            String userInput = scanner.nextLine().trim();
-            
-            if(userInput.length() < 1){
-                System.out.println("You must enter a non-blank value");
-                continue;
-            }
-            
-            inputs[0] = userInput;
-            valid = true;
+
+        public ChangePaceView() {
+           super (
+           "==========The Oregon Trail=========="
+       +"\nYou can change pace as follows: \n"
+        +"\n1. Staedy"
+        +"\n2. Strenuou"
+        +"\n3. Gruelling"
+        +"\nC. Continue the game"
+        +"\n-----What is your choice?"
+        +"\n===================================="
+           );
         }
-        
-        return inputs;
-        
-    }
-    
-    private boolean doAction(String[] inputs){
+//        @Override
+//        public boolean value = false;
+//        while(value == false){
+//            System.out.println("Please enter the action to take below:");
+//            Scanner scanner = new Scanner(System.in);
+//            
+//            //user string input
+//            String userInput = scanner.nextLine().trim();
+//            
+//            if(userInput.length() < 1){
+//                System.out.println("You must enter a non-blank value");
+//                continue;
+//            }
+//            
+//            inputs[0] = userInput;
+//            value = true;
+//        }
+//        
+//        return inputs;
+//        
+//    }
+    @Override
+    public boolean doAction(String value){
         
         //Set as first element and uppercase it
-        String menuItem = inputs[0].toUpperCase();
+        value = value.toUpperCase();
         
-        switch(menuItem){
+        switch(value){
             case "1":
                 this.changePaceSteady();
                 break;
