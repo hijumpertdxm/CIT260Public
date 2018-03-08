@@ -7,65 +7,35 @@ package byui.cit260.oregonTrail.view;
 
 import byui.cit260.oregonTrail.control.GameControl;
 import byui.cit260.oregonTrail.control.StatusControl;
-import java.util.Scanner;
 import oregontrailgame.OregonTrailGame;
 /**
  *
  * @author ayami
  */
-public class ChangeRationsView {
-    public void displayChangeRationsView(){
-        boolean endView = false;
-        do{
-            String[] inputs = this.getInputs();
-            if((inputs.length < 1)  || (inputs[0].toUpperCase().equals("Q"))){
-                return;
-            }
-            endView = doAction(inputs);
-        }while(endView != true);
-        
-    }
+public class ChangeRationsView extends View{
     
-    private String[] getInputs(){
-        
-        String[] inputs = new String[1];
-        
-        System.out.println("==========The Oregon Trail==========");
-        System.out.println("You can change food rations as follows: \n");
-        System.out.println("1. Filling - Large and generous meals.");
-        System.out.println("2. Meager - Small, but adequate meals.");
-        System.out.println("3. Bare bones - Very small insufficient meals.");
-        System.out.println("C. Continue the game");
-        System.out.println("-----What is your choice?");
-        System.out.println("====================================");
-        
-        boolean valid = false;
-        while(valid == false){
-            System.out.println("Please enter the action to take below:");
-            Scanner scanner = new Scanner(System.in);
-            
-            //user string input
-            String userInput = scanner.nextLine().trim();
-            
-            if(userInput.length() < 1){
-                System.out.println("You must enter a non-blank value");
-                continue;
-            }
-            
-            inputs[0] = userInput;
-            valid = true;
-        }
-        
-        return inputs;
-        
-    }
+    public ChangeRationsView () {
+      
+        super(
+        "==========The Oregon Trail=========="
+        +"\nYou can change food rations as follows:" 
+        +"\n1. Filling - Large and generous meals."
+        +"\n2. Meager - Small, but adequate meals."
+        +"\n3. Bare bones - Very small insufficient meals."
+        +"\nC. Continue the game"
+        +"\n-----What is your choice?"
+        +"\n===================================="
+          );
+    }  
+       
+   @Override
     
-    private boolean doAction(String[] inputs){
+    public boolean doAction(String value){
         
         //Set as first element and uppercase it
-        String menuItem = inputs[0].toUpperCase();
+        value = value.toUpperCase();
         
-        switch(menuItem){
+        switch(value){
             case "1":
                 this.changeRationsFilling();
                 break;
@@ -107,7 +77,7 @@ public class ChangeRationsView {
     private void continueGame() {
         //Go back to main menu
         GameMenuView gameMenuView = new GameMenuView();
-        gameMenuView.displayGameMenuView();
+        gameMenuView.display();
     }
     
 }

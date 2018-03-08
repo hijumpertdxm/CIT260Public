@@ -6,68 +6,37 @@
 package byui.cit260.oregonTrail.view;
 
 import byui.cit260.oregonTrail.control.GameControl;
-import java.util.Scanner;
-import oregontrailgame.OregonTrailGame;
+
 
 /**
  *
  * @author Randy ther Master
  */
-public class ChooseMonthToStartView {
-    
-    public void displayChooseMonthToStartView() {
-        boolean endOfView = false;
-        
-        do{
-            String[] inputs = this.getInputs();
-            if((inputs.length < 1) || (inputs[0].toUpperCase().equals("Q"))){
-                return;
-            }
-            endOfView = doAction(inputs);
-        }while(endOfView != true);
-    }
+public class ChooseMonthToStartView extends View{
 
- private String[] getInputs(){
-        
-        String[] inputs = new String[1];
-        
-        System.out.println("=====================================================");
-        System.out.println("Choose a month to begin your journ");
-        System.out.println("=====================================================");
-        System.out.println("1 - March");
-        System.out.println("2 - April");
-        System.out.println("3 - May");
-        System.out.println("4 - June");
-        System.out.println("5 - July");
-        System.out.println("6 - When Should I leave?");
-        System.out.println("=====================================================");
-        
-        boolean valid = false;
-        while(valid == false){
-            System.out.println("----What is your choic:");
-            Scanner scanner = new Scanner(System.in);
-            
-            //user string input
-            String userInput = scanner.nextLine().trim();
-            
-            if(userInput.length() < 1){
-                System.out.println("You must enter a non-blank value");
-                continue;
-            }
-            
-            inputs[0] = userInput;
-            valid = true;
-        }
-        
-        return inputs;
-    }
     
-    private boolean doAction(String[] inputs){
+    public ChooseMonthToStartView () {
+        super(
+         "====================================================="
+        +"\nChoose a month to begin your journ"
+        +"\n====================================================="
+        +"\n1 - March"
+        +"\n2 - April"
+        +"\n3 - May"
+        +"\n4 - June"
+        +"\n5 - July"
+        +"\n6 - When Should I leave?"
+        +"\n====================================================="
+            );
+ 
+    }
+    @Override
+    public boolean doAction(String value){
         
         //Set as first element and uppercase it
-        String months = inputs[0].toUpperCase();
+        value = value.toUpperCase();
         
-        switch(months){
+        switch(value){
             case "1":
                 this.March();
                 break;

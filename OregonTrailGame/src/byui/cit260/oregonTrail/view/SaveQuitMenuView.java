@@ -13,56 +13,29 @@ import oregontrailgame.OregonTrailGame;
  *
  * @author ayami
  */
-public class SaveQuitMenuView {
-    public void displaySaveQuitMenuView(){
-        boolean endView = false;
-        do{
-            String[] inputs = this.getInputs();
-            if(inputs.length < 1){
-                return;
-            }
-            endView = doAction(inputs);
-        }while(endView != true);
-    }
+public class SaveQuitMenuView extends View {
+
+    public SaveQuitMenuView (){
     
-    private String[] getInputs(){
-        
-        String[] inputs = new String[1];
-        
-        System.out.println("==========The Oregon Trail==========");
-        System.out.println("1. Save and Quit");
-        System.out.println("2. Quit");
-        System.out.println("C. Continue");
-        System.out.println("-----What is your choice?");
-        System.out.println("====================================");
-        
-        boolean valid = false;
-        while(valid == false){
-            System.out.println("Please enter the action to take below:");
-            Scanner scanner = new Scanner(System.in);
+       super (
+        "==========The Oregon Trail=========="
+        +"\n1. Save and Quit"
+        +"\n2. Quit"
+        +"\nC. Continue"
+        +"\n-----What is your choice?"
+        +"\n===================================="
             
-            //user string input
-            String userInput = scanner.nextLine().trim();
-            
-            if(userInput.length() < 1){
-                System.out.println("You must enter a non-blank value");
-                continue;
-            }
-            
-            inputs[0] = userInput;
-            valid = true;
-        }
-        
-        return inputs;
-        
+       );
+
     }
+      @Override
     
-    private boolean doAction(String[] inputs){
+    public boolean doAction(String value){
         
         //Set as first element and uppercase it
-        String menuItem = inputs[0].toUpperCase();
+        value = value.toUpperCase();
         
-        switch(menuItem){
+        switch(value){
             case "1":
                 this.saveAndQuitGame();
                 break;
@@ -95,7 +68,7 @@ public class SaveQuitMenuView {
     private void continueGame() {
         //Go back to main menu
         GameMenuView gameMenuView = new GameMenuView();
-        gameMenuView.displayGameMenuView();
+        gameMenuView.display();
     }
     
 }

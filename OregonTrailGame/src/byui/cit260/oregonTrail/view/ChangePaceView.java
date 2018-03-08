@@ -16,7 +16,7 @@ public class ChangePaceView extends View{
         public ChangePaceView() {
            super (
            "==========The Oregon Trail=========="
-       +"\nYou can change pace as follows: \n"
+        +"\nYou can change pace as follows: \n"
         +"\n1. Staedy"
         +"\n2. Strenuou"
         +"\n3. Gruelling"
@@ -25,27 +25,7 @@ public class ChangePaceView extends View{
         +"\n===================================="
            );
         }
-//        @Override
-//        public boolean value = false;
-//        while(value == false){
-//            System.out.println("Please enter the action to take below:");
-//            Scanner scanner = new Scanner(System.in);
-//            
-//            //user string input
-//            String userInput = scanner.nextLine().trim();
-//            
-//            if(userInput.length() < 1){
-//                System.out.println("You must enter a non-blank value");
-//                continue;
-//            }
-//            
-//            inputs[0] = userInput;
-//            value = true;
-//        }
-//        
-//        return inputs;
-//        
-//    }
+
     @Override
     public boolean doAction(String value){
         
@@ -79,7 +59,7 @@ public class ChangePaceView extends View{
     private void continueGame() {
         //Go back to main menu
         GameMenuView gameMenuView = new GameMenuView();
-        gameMenuView.displayGameMenuView();
+        gameMenuView.display();
     }
 
         private void changePaceSteady() {
