@@ -20,7 +20,7 @@ public class StopToRestView extends View{
             "====================================================="
             +"\nStopped to rest"
             +"\n====================================================="
-            +"\nPress enter to continue"
+            +"\nType anything to continue"
             +"\n====================================================="
             );
     }
