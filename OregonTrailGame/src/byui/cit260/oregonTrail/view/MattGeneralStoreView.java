@@ -26,7 +26,7 @@ public class MattGeneralStoreView extends  View{
         +"\n       Total Bill                                $0  "
         +"\n       Total Funds                               $800"
         +"\n       Total Remaining                           $800"
-                
+        +"\nC Continue the game                                  "       
         +"\n ---- What is you choice?                            "           
         );
         
@@ -56,6 +56,10 @@ public class MattGeneralStoreView extends  View{
                 this.getSpareParts();
                 break;
                 
+            case "C":
+                this.getContinue();
+                break;
+                
             default:
               System.out.println("Invalid Store item");
         }   
@@ -63,23 +67,26 @@ public class MattGeneralStoreView extends  View{
         }    
 
     private void getOxen() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("You have selected Oxen");
     }
 
     private void getFood() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       System.out.println("You have selected Food");
     }
 
     private void getClothing() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       System.out.println("You have selected Clothing");
     }
 
     private void getAmmunition() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        System.out.println("You have selected Ammunition"); }
 
     private void getSpareParts() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("You have selected Spare Parts");
+    }
+
+    private void getContinue() {
+        System.out.println("You have selected Continue");
     }
         
 }    
