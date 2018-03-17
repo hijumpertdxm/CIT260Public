@@ -5,6 +5,10 @@
  */
 package byui.cit260.oregonTrail.control;
 
+import byui.cit260.oregonTrail.model.Game;
+import byui.cit260.oregonTrail.model.Inventory;
+import byui.cit260.oregonTrail.model.ItemType;
+import byui.cit260.oregonTrail.model.Location;
 import byui.cit260.oregonTrail.model.Player;
 import byui.cit260.oregonTrail.model.Status;
 import oregontrailgame.OregonTrailGame;
@@ -14,16 +18,6 @@ import oregontrailgame.OregonTrailGame;
  * @author Roller
  */
 public class GameControl {
-    
-    public static void gameInitialization(){
-        //setup all of the game variables
-        
-        Status status = StatusControl.statusInitialization();
-
-        OregonTrailGame.getCurrentGame().setDaysTraveled(0);
-        OregonTrailGame.getCurrentGame().setMileMarker(0.0);
-        OregonTrailGame.getCurrentGame().setStatus(status);
-    }
     
     public static double calcScore(double inventoryValue, double money, int partyHealth, int occupation, int partyNotDead){
         
@@ -71,8 +65,27 @@ public class GameControl {
         return player;
     }
 
-    public static void createNewGame(Player player){
-        System.out.println("createNewGame called in GameControl class");
+    public static int createNewGame(Player player){
+        if (player == null){
+            return -1;
+        }
+        Game game = new Game();
+        game.setPlayer(player);
+        OregonTrailGame.setCurrentGame(game);
+
+        Inventory[] items = GameControl.createItems();
+        game.setInventory(items);
+
+        int noOfRows = 2;
+        int noOfColumns = 4;
+        Location[] map = MapControl.createMap(noOfRows, noOfColumns);
+        if(map == null){
+            return -1;
+        }
+
+        game.setLocations(map);
+                
+        return 1; // indicates success 
     }
 
     public static void progressOneDay(int progress) {
@@ -103,6 +116,48 @@ public class GameControl {
             //Change the mileMarker based on pace switch statement
             OregonTrailGame.getCurrentGame().setMileMarker(mileMarker);
         }
+    }
+
+    public static Inventory[] createItems() {
+        System.out.println("createItems was called in the GameControl");
+        Inventory[] inventory = new Inventory[5];
+        
+        //Set Oxen item for the game inventory
+        Inventory itemOne = new Inventory();
+        itemOne.setName("Oxen");
+        itemOne.setQuantity(0.0);
+        itemOne.setBasePrice(10.0);
+        inventory[ItemType.Oxen.ordinal()] = itemOne;
+        
+        //Set Food item for the game inventory
+        Inventory itemTwo = new Inventory();
+        itemTwo.setName("Food (1 pound)");
+        itemTwo.setQuantity(0.0);
+        itemTwo.setBasePrice(1.0);
+        inventory[ItemType.Food.ordinal()] = itemTwo;
+        
+        //Set Clothing item for the game inventory
+        Inventory itemThree = new Inventory();
+        itemThree.setName("Clothing");
+        itemThree.setQuantity(0.0);
+        itemThree.setBasePrice(5.0);
+        inventory[ItemType.Clothing.ordinal()] = itemThree;
+        
+        //Set Ammunition item for the game inventory
+        Inventory itemFour = new Inventory();
+        itemFour.setName("Ammunition");
+        itemFour.setQuantity(0.0);
+        itemFour.setBasePrice(1.0);
+        inventory[ItemType.Ammunition.ordinal()] = itemFour;
+        
+        //Set Spare Parts item for the game inventory
+        Inventory itemFive = new Inventory();
+        itemFive.setName("Spare Parts");
+        itemFive.setQuantity(0.0);
+        itemFive.setBasePrice(20.0);
+        inventory[ItemType.SpareParts.ordinal()] = itemFive;
+ 
+        return inventory;
     }
     
 }

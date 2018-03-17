@@ -5,6 +5,7 @@
  */
 package byui.cit260.oregonTrail.view;
 
+import byui.cit260.oregonTrail.model.Location;
 import oregontrailgame.OregonTrailGame;
 
 /**
@@ -89,7 +90,13 @@ public class GameMenuView extends View{
     }
 
     private void displayMap() {
-        System.out.println("displayMap() was called from the game menu");
+        String maps = "";
+        Location[] locations = OregonTrailGame.getCurrentGame().getLocations();
+        for(int i=0; i <= locations.length - 1; i++){
+            maps += "\n" + locations[i].getName() + " at Mile Marker: " + locations[i].getMileMarker() + "";
+        }
+        ViewMapView viewMap = new ViewMapView(maps);
+        viewMap.display();
     }
 
     private void changePace() {

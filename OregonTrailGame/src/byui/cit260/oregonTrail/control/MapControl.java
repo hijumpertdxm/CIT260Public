@@ -5,6 +5,8 @@
  */
 package byui.cit260.oregonTrail.control;
 
+import byui.cit260.oregonTrail.model.Location;
+
 /**
  *
  * @author Roller
@@ -33,6 +35,30 @@ public class MapControl {
         double riverFailChance = depth  + (.1 * width) + (sumRainyDays * 5);
         
         return riverFailChance;
+    }
+
+    public static Location[] createMap(int noOfRows, int noOfColumns) {
+        if(noOfRows < 1 || noOfColumns < 1){
+            return null;
+        }
+        
+        Location[] locations;
+        locations = MapControl.createLocations(noOfRows, noOfColumns);
+        return locations;
+    }
+
+    public static Location[] createLocations(int rows, int columns) {
+        Location[] locations = new Location[(rows * columns)];
+        for(int i=1; i <= (rows * columns); i++){
+            double mileMarker = 2000/(rows * columns);
+            Location location = new Location();
+            //Need to make a better algorithm for location names, probly an enum
+            location.setName("Location " + i);
+            location.setMileMarker((mileMarker * i));
+            locations[i-1] = location;
+            //Need to stub more location setting things here
+        }
+        return locations;
     }
     
 }

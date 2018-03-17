@@ -18,22 +18,14 @@ public class Game implements Serializable{
     private double mileMarker;
     private int daysTraveled;
     private Status status;
-    private Inventory inventory;
+    private Inventory[] inventory;
     private Player player;
     private int[] rainyDays;
+    private Location[] locations;
 
     public Game() {
     }
 
-    public int[] getRainyDays() {
-        return rainyDays;
-    }
-
-    public void setRainyDays(int[] rainyDays) {
-        this.rainyDays = rainyDays;
-    }
-
-    
     public double getMileMarker() {
         return mileMarker;
     }
@@ -58,11 +50,11 @@ public class Game implements Serializable{
         this.status = status;
     }
 
-    public Inventory getInventory() {
+    public Inventory[] getInventory() {
         return inventory;
     }
 
-    public void setInventory(Inventory inventory) {
+    public void setInventory(Inventory[] inventory) {
         this.inventory = inventory;
     }
 
@@ -74,15 +66,32 @@ public class Game implements Serializable{
         this.player = player;
     }
 
+    public int[] getRainyDays() {
+        return rainyDays;
+    }
+
+    public void setRainyDays(int[] rainyDays) {
+        this.rainyDays = rainyDays;
+    }
+
+    public Location[] getLocations() {
+        return locations;
+    }
+
+    public void setLocations(Location[] locations) {
+        this.locations = locations;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 11 * hash + (int) (Double.doubleToLongBits(this.mileMarker) ^ (Double.doubleToLongBits(this.mileMarker) >>> 32));
-        hash = 11 * hash + this.daysTraveled;
-        hash = 11 * hash + Objects.hashCode(this.status);
-        hash = 11 * hash + Objects.hashCode(this.inventory);
-        hash = 11 * hash + Objects.hashCode(this.player);
-        hash = 11 * hash + Arrays.hashCode(this.rainyDays);
+        int hash = 5;
+        hash = 23 * hash + (int) (Double.doubleToLongBits(this.mileMarker) ^ (Double.doubleToLongBits(this.mileMarker) >>> 32));
+        hash = 23 * hash + this.daysTraveled;
+        hash = 23 * hash + Objects.hashCode(this.status);
+        hash = 23 * hash + Arrays.deepHashCode(this.inventory);
+        hash = 23 * hash + Objects.hashCode(this.player);
+        hash = 23 * hash + Arrays.hashCode(this.rainyDays);
+        hash = 23 * hash + Arrays.deepHashCode(this.locations);
         return hash;
     }
 
@@ -107,7 +116,7 @@ public class Game implements Serializable{
         if (!Objects.equals(this.status, other.status)) {
             return false;
         }
-        if (!Objects.equals(this.inventory, other.inventory)) {
+        if (!Arrays.deepEquals(this.inventory, other.inventory)) {
             return false;
         }
         if (!Objects.equals(this.player, other.player)) {
@@ -116,14 +125,15 @@ public class Game implements Serializable{
         if (!Arrays.equals(this.rainyDays, other.rainyDays)) {
             return false;
         }
+        if (!Arrays.deepEquals(this.locations, other.locations)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Game{" + "mileMarker=" + mileMarker + ", daysTraveled=" + daysTraveled + ", status=" + status + ", inventory=" + inventory + ", player=" + player + ", rainyDays=" + rainyDays + '}';
+        return "Game{" + "mileMarker=" + mileMarker + ", daysTraveled=" + daysTraveled + ", status=" + status + ", inventory=" + inventory + ", player=" + player + ", rainyDays=" + rainyDays + ", locations=" + locations + '}';
     }
-
-    
-    
+        
 }
