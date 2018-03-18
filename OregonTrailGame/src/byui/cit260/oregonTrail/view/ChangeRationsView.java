@@ -14,14 +14,12 @@ import oregontrailgame.OregonTrailGame;
  */
 public class ChangeRationsView extends View{
     
-    public ChangeRationsView () {
+    public ChangeRationsView (String text) {
       
         super(
         "==========The Oregon Trail=========="
         +"\nYou can change food rations as follows:" 
-        +"\n1. Filling - Large and generous meals."
-        +"\n2. Meager - Small, but adequate meals."
-        +"\n3. Bare bones - Very small insufficient meals."
+        +text
         +"\nC. Continue the game"
         +"\n-----What is your choice?"
         +"\n===================================="

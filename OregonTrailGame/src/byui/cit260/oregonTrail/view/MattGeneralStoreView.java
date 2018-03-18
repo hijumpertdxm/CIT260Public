@@ -86,7 +86,7 @@ public class MattGeneralStoreView extends  View{
     }
 
     private void getContinue() {
-        System.out.println("You have selected Continue");
+        System.out.println("continueTrail() was called from the game menu");
     }
         
 }    

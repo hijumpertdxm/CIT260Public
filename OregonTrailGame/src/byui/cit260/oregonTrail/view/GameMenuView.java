@@ -7,6 +7,7 @@ package byui.cit260.oregonTrail.view;
 
 import byui.cit260.oregonTrail.model.Location;
 import byui.cit260.oregonTrail.model.PaceType;
+import byui.cit260.oregonTrail.model.RationType;
 import oregontrailgame.OregonTrailGame;
 
 /**
@@ -111,7 +112,11 @@ public class GameMenuView extends View{
 
     private void changeRations() {
         //Go to Change Rations View
-        ChangeRationsView changeRationsView = new ChangeRationsView();
+        String rations = "";
+        for(RationType ration: RationType.values()){
+            rations += "\n" + (ration.ordinal() + 1) + ". " + ration.name();
+        }        
+        ChangeRationsView changeRationsView = new ChangeRationsView(rations);
         changeRationsView.display();
     }
 
