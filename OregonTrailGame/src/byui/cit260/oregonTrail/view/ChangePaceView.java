@@ -72,13 +72,13 @@ public class ChangePaceView extends View{
         private void changePaceStrenuous() {
             int success = StatusControl.changePace(PaceType.Strenuous);
             //TODO: need to return error here
-            System.out.println("The pace has been changed to steady"); 
+            System.out.println("The pace has been changed to strenuous"); 
         }
 
         private void changePaceGruelling() {
             int success = StatusControl.changePace(PaceType.Gruelling);
             //TODO: need to return error here
-            System.out.println("The pace has been changed to steady");      
+            System.out.println("The pace has been changed to gruelling");      
         }
     
    }
