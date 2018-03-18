@@ -88,7 +88,9 @@ public class GameMenuView extends View{
     }
 
     private void checkSupplies() {
-        System.out.println("checkSupplies() was called from the game menu");
+        //Go to Check Supplies View
+        CheckSuppliesView checkSuppliesView = new CheckSuppliesView();
+        checkSuppliesView.display();
     }
 
     private void displayMap() {
