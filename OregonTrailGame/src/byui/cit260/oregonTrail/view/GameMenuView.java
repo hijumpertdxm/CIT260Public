@@ -6,6 +6,7 @@
 package byui.cit260.oregonTrail.view;
 
 import byui.cit260.oregonTrail.model.Location;
+import byui.cit260.oregonTrail.model.PaceType;
 import oregontrailgame.OregonTrailGame;
 
 /**
@@ -22,11 +23,11 @@ public class GameMenuView extends View{
         +"\n====================================================="
         +"\nLocation: " //Need to setup locations first
         +"\nDate: "
-        +"\nWeather: "
-        +"\nHealth: "  //+ OregonTrailGame.getCurrentGame().getStatus().getPartyhealth());
-        +"\nPace: "   //+ OregonTrailGame.getCurrentGame().getStatus().getPace());
-        +"\nRations: "  //+ OregonTrailGame.getCurrentGame().getStatus().getRation() + "\n");
-        +"\n1. Continue on trail"
+        +"\nWeather: " + OregonTrailGame.getCurrentGame().getStatus().getWeather().getName()
+        +"\nHealth: "  + OregonTrailGame.getCurrentGame().getStatus().getPartyhealth().name()
+        +"\nPace: "   + OregonTrailGame.getCurrentGame().getStatus().getPace()
+        +"\nRations: "  + OregonTrailGame.getCurrentGame().getStatus().getRation()
+        +"\n\n1. Continue on trail"
         +"\n2. Check supplies"
         +"\n3. Display the map"
         +"\n4. Change pace"
@@ -100,7 +101,12 @@ public class GameMenuView extends View{
     }
 
     private void changePace() {
-        System.out.println("changePace() was called from the game menu");
+        String pacing = "";
+        for(PaceType pace: PaceType.values()){
+            pacing += "\n" + (pace.ordinal() + 1) + ". " + pace.name();
+        }
+        ChangePaceView paceView = new ChangePaceView(pacing);
+        paceView.display();
     }
 
     private void changeRations() {

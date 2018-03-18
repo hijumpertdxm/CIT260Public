@@ -9,8 +9,12 @@ import byui.cit260.oregonTrail.model.Game;
 import byui.cit260.oregonTrail.model.Inventory;
 import byui.cit260.oregonTrail.model.ItemType;
 import byui.cit260.oregonTrail.model.Location;
+import byui.cit260.oregonTrail.model.PaceType;
+import byui.cit260.oregonTrail.model.PartyHealth;
 import byui.cit260.oregonTrail.model.Player;
+import byui.cit260.oregonTrail.model.RationType;
 import byui.cit260.oregonTrail.model.Status;
+import byui.cit260.oregonTrail.model.Weather;
 import oregontrailgame.OregonTrailGame;
 
 /**
@@ -84,6 +88,16 @@ public class GameControl {
         }
 
         game.setLocations(map);
+        
+        //Set the initial status
+        Status status = new Status();
+        status.setPace(PaceType.Steady);
+        status.setPartyhealth(PartyHealth.Good);
+        status.setRation(RationType.Filling);
+        //TODO: Weather needs to be based on when they set off
+        status.setWeather(Weather.Warm);
+        
+        game.setStatus(status);
                 
         return 1; // indicates success 
     }
@@ -102,11 +116,11 @@ public class GameControl {
             double mileMarker = OregonTrailGame.getCurrentGame().getMileMarker();
             
             switch(OregonTrailGame.getCurrentGame().getStatus().getPace()){
-                case "gruelling":
+                case Gruelling:
                     mileMarker += 40;
                     break;
                     
-                case "strenuous":
+                case Strenuous:
                     mileMarker += 20;
                     
                 default: //default is steady

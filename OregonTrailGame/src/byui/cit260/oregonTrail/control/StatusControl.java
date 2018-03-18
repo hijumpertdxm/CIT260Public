@@ -5,8 +5,10 @@
  */
 package byui.cit260.oregonTrail.control;
 
+import byui.cit260.oregonTrail.model.PaceType;
 import byui.cit260.oregonTrail.model.PartyHealth;
 import byui.cit260.oregonTrail.model.Status;
+import oregontrailgame.OregonTrailGame;
 
 /**
  *
@@ -14,16 +16,15 @@ import byui.cit260.oregonTrail.model.Status;
  */
 public class StatusControl {
     
-    public static Status statusInitialization(){
+    public static int changePace(PaceType pace){
         
-        Status status = new Status();
+        if(pace == null){
+            return -1; //fails
+        }
         
-        // TODO : Make sure the other status' like weather and money are being set at the beginning from the occupation and month leave views
-        status.setPace("steady");
-        status.setPartyhealth(PartyHealth.Good);
-        status.setRation("filling");
+        Status status = OregonTrailGame.getCurrentGame().getStatus();
+        status.setPace(pace);
         
-        return status;
+        return 1; // indicates success 
     }
-    
 }
