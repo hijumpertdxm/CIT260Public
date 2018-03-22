@@ -5,6 +5,7 @@
  */
 package byui.cit260.oregonTrail.control;
 
+import byui.cit260.oregonTrail.exceptions.MapControlException;
 import byui.cit260.oregonTrail.model.Location;
 
 /**
@@ -13,11 +14,11 @@ import byui.cit260.oregonTrail.model.Location;
  */
 public class MapControl {
     
-    public static double calcRiverChance(double depth, double width, int[] rainyDays){
+    public static double calcRiverChance(double depth, double width, int[] rainyDays) throws MapControlException{
         
         //Failing depth
         if(depth > 72 || depth < 0){
-            return -1;
+            throw new MapControlException("You cannot determine the depth of this river, so you turn around.");
         }
         
         //Failing width
@@ -37,9 +38,9 @@ public class MapControl {
         return riverFailChance;
     }
 
-    public static Location[] createMap(int noOfRows, int noOfColumns) {
+    public static Location[] createMap(int noOfRows, int noOfColumns) throws MapControlException{
         if(noOfRows < 1 || noOfColumns < 1){
-            return null;
+            throw new MapControlException("You need a row or column for this map!");
         }
         
         Location[] locations;

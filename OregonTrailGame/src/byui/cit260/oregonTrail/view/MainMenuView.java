@@ -6,6 +6,7 @@
 package byui.cit260.oregonTrail.view;
 
 import byui.cit260.oregonTrail.control.GameControl;
+import byui.cit260.oregonTrail.exceptions.MapControlException;
 import java.util.Scanner;
 import oregontrailgame.OregonTrailGame;
 
@@ -35,7 +36,13 @@ public class MainMenuView extends View {
         
         switch(value){
             case "N":
-                this.startNewGame();
+                try{
+                    this.startNewGame();
+                }
+                catch(MapControlException e){
+                    System.out.println(e);
+                    return false;
+                }
                 break;
                 
             case "R":
@@ -56,7 +63,7 @@ public class MainMenuView extends View {
         return false;
     }
 
-    private void startNewGame() {
+    private void startNewGame() throws MapControlException{
         //create new game
         GameControl.createNewGame(OregonTrailGame.getPlayer());
         //GameControl.gameInitialization();

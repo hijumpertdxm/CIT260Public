@@ -5,6 +5,7 @@
  */
 package byui.cit260.oregonTrail.control;
 
+import byui.cit260.oregonTrail.exceptions.MapControlException;
 import byui.cit260.oregonTrail.model.Game;
 import byui.cit260.oregonTrail.model.Inventory;
 import byui.cit260.oregonTrail.model.ItemType;
@@ -69,7 +70,7 @@ public class GameControl {
         return player;
     }
 
-    public static int createNewGame(Player player){
+    public static int createNewGame(Player player) throws MapControlException{
         if (player == null){
             return -1;
         }
@@ -80,9 +81,10 @@ public class GameControl {
         Inventory[] items = GameControl.createItems();
         game.setInventory(items);
 
-        int noOfRows = 2;
+        int noOfRows = 0;
         int noOfColumns = 4;
         Location[] map = MapControl.createMap(noOfRows, noOfColumns);
+
         if(map == null){
             return -1;
         }

@@ -51,7 +51,7 @@ public class StartExistingGameView extends View {
 
     private void startNewGame() {
         //create new game
-        GameControl.createNewGame(OregonTrailGame.getPlayer());
+        //GameControl.createNewGame(OregonTrailGame.getPlayer());
         //GameControl.gameInitialization();
     }
      private void restartGame() {
