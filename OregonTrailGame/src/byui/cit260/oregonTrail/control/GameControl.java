@@ -58,9 +58,9 @@ public class GameControl {
         
     }
     
-    public static Player savePlayer(String name){
+    public static Player savePlayer(String name) throws GameControlException{
         if(name == null || name.length() < 1){
-            return null;
+            throw new GameControlException("Name cannot be null or empty string");
         }
         
         Player player = new Player();
@@ -71,9 +71,9 @@ public class GameControl {
         return player;
     }
 
-    public static int createNewGame(Player player) throws MapControlException{
+    public static void createNewGame(Player player) throws MapControlException,GameControlException{
         if (player == null){
-            return -1;
+            throw new GameControlException("The player can not be null");
         }
         Game game = new Game();
         game.setPlayer(player);
@@ -87,7 +87,7 @@ public class GameControl {
         Location[] map = MapControl.createMap(noOfRows, noOfColumns);
 
         if(map == null){
-            return -1;
+           throw new MapControlException("The map cannot be null" );
         }
 
         game.setLocations(map);
@@ -102,7 +102,7 @@ public class GameControl {
         
         game.setStatus(status);
                 
-        return 1; // indicates success 
+        
     }
 
     public static void progressOneDay(int progress) {
