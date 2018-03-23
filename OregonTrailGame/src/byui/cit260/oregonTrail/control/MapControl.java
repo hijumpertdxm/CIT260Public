@@ -23,7 +23,7 @@ public class MapControl {
         
         //Failing width
         if(width > 500 || width < 20){
-            return -1;
+            throw new MapControlException("You cannot determine the width of this river, so you turn around.");
         }
         
         //Calculating past 7 rainyDays

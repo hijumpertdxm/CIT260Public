@@ -36,13 +36,7 @@ public class MainMenuView extends View {
         
         switch(value){
             case "N":
-                try{
-                    this.startNewGame();
-                }
-                catch(MapControlException e){
-                    System.out.println(e);
-                    return false;
-                }
+                this.startNewGame();
                 break;
                 
             case "R":
@@ -63,11 +57,20 @@ public class MainMenuView extends View {
         return false;
     }
 
-    private void startNewGame() throws MapControlException{
+    private void startNewGame(){
         //create new game
-        GameControl.createNewGame(OregonTrailGame.getPlayer());
-        //GameControl.gameInitialization();
-        
+        try{
+            GameControl.createNewGame(OregonTrailGame.getPlayer());
+        }
+        catch(MapControlException e){
+            System.out.println(e.getMessage());
+            return; //take this return out and it propagates up to the main function and returns null
+        }
+        catch (Throwable e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            return;
+        }
         GameMenuView gameMenuView = new GameMenuView();
         gameMenuView.display();
     }

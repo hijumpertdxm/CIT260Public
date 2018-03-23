@@ -6,6 +6,7 @@
 package byui.cit260.oregonTrail.view;
 
 import byui.cit260.oregonTrail.control.GameControl;
+import byui.cit260.oregonTrail.exceptions.MapControlException;
 import oregontrailgame.OregonTrailGame;
 
 /**
@@ -49,10 +50,20 @@ public class StartExistingGameView extends View {
          return false;
     }
 
-    private void startNewGame() {
+    private void startNewGame(){
         //create new game
-        //GameControl.createNewGame(OregonTrailGame.getPlayer());
-        //GameControl.gameInitialization();
+        try{
+            GameControl.createNewGame(OregonTrailGame.getPlayer());
+        }
+        catch (MapControlException e){
+            System.out.println(e.getMessage());
+            return;
+        }
+        catch (Throwable e){
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            return;
+        }
     }
      private void restartGame() {
         StartExistingGameView startExistingGameView = new StartExistingGameView();

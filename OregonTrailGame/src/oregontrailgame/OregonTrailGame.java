@@ -35,9 +35,15 @@ public class OregonTrailGame {
     }
     
     public static void main(String[] args) {
-        
+       try{
        StartProgramView startProgramView = new StartProgramView();
        startProgramView.display();
+       }
+       catch (Throwable e){
+           System.out.println("Oops, something went wrong, if persistent contact the developer: " + e.getMessage());
+           e.printStackTrace();
+           return;
+       }
     }
     
 }

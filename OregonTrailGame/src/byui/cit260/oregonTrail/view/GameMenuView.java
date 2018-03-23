@@ -46,33 +46,42 @@ public class GameMenuView extends View{
         
         //Set as first element and uppercase it
         value = value.toUpperCase();
+        //Convert to Number
+        int option;
+        try{
+            option = Integer.parseInt(value);
+        }
+        catch (NumberFormatException e){
+            System.out.println("Input was not valid: " + e.getMessage());
+            return false;
+        }
         
-        switch(value){
-            case "1":
+        switch(option){
+            case 1:
                 this.continueTrail();
                 break;
                 
-            case "2":
+            case 2:
                 this.checkSupplies();
                 break;
                 
-            case "3":
+            case 3:
                 this.displayMap();
                 break;
                 
-            case "4":
+            case 4:
                 this.changePace();
                 break;
                 
-            case "5":
+            case 5:
                 this.changeRations();
                 break;
                 
-            case "6":
+            case 6:
                 this.rest();
                 break;
                 
-            case "7":
+            case 7:
                 this.hunt();
                 break;
                 

@@ -81,7 +81,7 @@ public class GameControl {
         Inventory[] items = GameControl.createItems();
         game.setInventory(items);
 
-        int noOfRows = 0;
+        int noOfRows = 1; //Change this to 0 to throw a MapControlException
         int noOfColumns = 4;
         Location[] map = MapControl.createMap(noOfRows, noOfColumns);
 
