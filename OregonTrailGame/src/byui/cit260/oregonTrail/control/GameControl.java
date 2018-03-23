@@ -17,6 +17,7 @@ import byui.cit260.oregonTrail.model.RationType;
 import byui.cit260.oregonTrail.model.Status;
 import byui.cit260.oregonTrail.model.Weather;
 import oregontrailgame.OregonTrailGame;
+import byui.cit260.oregonTrail.exceptions.GameControlException;
 
 /**
  *
@@ -24,31 +25,31 @@ import oregontrailgame.OregonTrailGame;
  */
 public class GameControl {
     
-    public static double calcScore(double inventoryValue, double money, int partyHealth, int occupation, int partyNotDead){
+    public static double calcScore(double inventoryValue, double money, int partyHealth, int occupation, int partyNotDead )throws GameControlException{
         
         //inventoryValue failure
         if(inventoryValue < 237 || inventoryValue > 7050){
-            return -1;
+           throw new GameControlException("The value must be between 237 and 7050");
         }
         
         //money failure
         if(money < 0 || money > 1600){
-            return -1;
+            throw new GameControlException("Invalid amount of money");
         }
         
         //partyHealth failure
         if(partyHealth < 1 || partyHealth > 3){
-            return -1;
+            throw new GameControlException("Party member has invald health number");
         }
         
         //occupation failure
         if(occupation < 1 || occupation > 3){
-            return -1;
+            throw new GameControlException("Invalid entry for occupation");
         }
         
         //partyNotDead failure
         if(partyNotDead < 1 || partyNotDead > 5){
-            return -1;
+           throw new GameControlException("The value must be between 1 and 5");
         }
         
         double finalScore = (inventoryValue + money) * (partyHealth * occupation * partyNotDead);
