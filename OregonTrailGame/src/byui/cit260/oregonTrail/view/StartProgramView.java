@@ -5,6 +5,7 @@
  */
 package byui.cit260.oregonTrail.view;
 import byui.cit260.oregonTrail.control.GameControl;
+import byui.cit260.oregonTrail.exceptions.GameControlException;
 import byui.cit260.oregonTrail.model.Player;
 import java.util.Scanner;
 
@@ -23,8 +24,15 @@ public class StartProgramView extends View{
     public boolean doAction(String value){
         
         String playersName = value;
-        Player player = GameControl.savePlayer(playersName);
-        
+        Player player = new Player();
+        try{
+        player = GameControl.savePlayer(playersName);
+        }
+        catch(GameControlException e){
+            System.out.println(e.getMessage());
+                    return  false;
+        }
+       
         if(player == null){
             System.out.println("Could not create the player. Please enter a different name.");
             return false;
