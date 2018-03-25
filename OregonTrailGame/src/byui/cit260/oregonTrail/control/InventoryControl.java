@@ -15,11 +15,11 @@ public class InventoryControl {
     public static  double calcInventoryValue(double locationMultiplier, double sumInventoryBase) throws InventoryControlException{
         
         if(locationMultiplier < 1 || locationMultiplier > 3){
-            throw new InventoryControlException("string here");
+            throw new InventoryControlException("You are WAY off the path!");
         }
         
         if(sumInventoryBase < 237 || sumInventoryBase > 7050){
-            return -1;
+            throw new InventoryControlException("There is a SERIOUS problem with your inventory!");
         }
         
         
@@ -35,65 +35,65 @@ public class InventoryControl {
         
         //Check each item for a value error
         if(basePriceOxen < 20 || basePriceOxen > 20){
-            return -1;
+            throw new InventoryControlException("These are some VERY special oxen");
         }
         
         if(numberOxen < 1 || numberOxen > 8){
-            return -1;
+            throw new InventoryControlException("You must have at least 2, and no more than 8, oxen.");
         }
                 
       
          if(basePriceWheels < 5 || basePriceWheels > 5){
-            return -1;
+            throw new InventoryControlException("These are some VERY special wheels");
         }
         
-        if(numberWheels < 1 || numberWheels > 8){
-            return -1;
+        if(numberWheels < 2 || numberWheels > 8){
+            throw new InventoryControlException("You must have at least 2, and no more than 8, wheels.");
         }
                 
                
         if(basePriceAxles < 10 || basePriceAxles > 10){
-            return -1;
+            throw new InventoryControlException("These are some VERY special axles");
         }
         
         if(numberAxles < 2 || numberAxles > 4){
-            return -1;
+            throw new InventoryControlException("You must have at least 2, and no more than 4, axles.");
         }
         
       
         if(basePriceTongues < 15 || basePriceTongues > 15){
-            return -1;
+            throw new InventoryControlException("These are some VERY special wagon tongues");
         }
         
         if(numberTongues < 1 || numberTongues > 8){
-            return -1;
+            throw new InventoryControlException("You must have at least 1, and no more than 8, wagon tongues.");
         }      
         
         
         if(basePriceClothes < 4 || basePriceClothes > 4){
-            return -1;
+            throw new InventoryControlException("These are some VERY special clothes");
         }
         
         if(numberClothes < 1 || numberClothes > 20){
-            return -1;
+            throw new InventoryControlException("You must have at least 1, and no more than 20, sets of clothing.");
         }     
     
         
         if(basePriceAmmunition < 1 || basePriceAmmunition > 1){
-            return -1;
+            throw new InventoryControlException("This is some VERY special ammunition");
         }
         
         if(numberAmmunition < 0 || numberAmmunition > 1000){
-            return -1;
+            throw new InventoryControlException("You have an ammunition problem!");
         }
         
      
         if(basePriceFood < .5 || basePriceFood > .5){
-            return -1;
+            throw new InventoryControlException("This is some VERY special food");
         }
         
         if(numberFood < 0 || numberFood > 2000){
-            return -1;
+            throw new InventoryControlException("You have a food problem!");
         }
         
         //calculate the value of each item type in inventory
