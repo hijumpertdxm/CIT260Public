@@ -33,6 +33,15 @@ public class ChangePaceView extends View{
         //Set as first element and uppercase it
         value = value.toUpperCase();
         
+        int paceTest;
+        try{
+            paceTest = Integer.parseInt(value);
+        }
+        catch (NumberFormatException e){
+            System.out.println("Your input was not valid: " + e.getMessage());
+            return false;
+        }
+        
         switch(value){
             case "1":
                 this.changePaceSteady();
@@ -63,6 +72,7 @@ public class ChangePaceView extends View{
         gameMenuView.display();
     }
 
+    //I get these errors when I remove the "return 1" in Status control class and change the method to void:
         private void changePaceSteady() {
             int success = StatusControl.changePace(PaceType.Steady);
             //TODO: need to return error here
