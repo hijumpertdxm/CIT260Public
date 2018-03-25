@@ -14,15 +14,13 @@ import oregontrailgame.OregonTrailGame;
  */
 public class ChangeRationsView extends View{
     
-    public ChangeRationsView () {
+    public ChangeRationsView (String text) {
       
         super(
         "==========The Oregon Trail=========="
         +"\nYou can change food rations as follows:" 
-        +"\n1. Filling - Large and generous meals."
-        +"\n2. Meager - Small, but adequate meals."
-        +"\n3. Bare bones - Very small insufficient meals."
-        +"\nC. Continue the game"
+        +text
+        +"\n4. Continue the game"
         +"\n-----What is your choice?"
         +"\n===================================="
           );
@@ -34,21 +32,28 @@ public class ChangeRationsView extends View{
         
         //Set as first element and uppercase it
         value = value.toUpperCase();
-        
-        switch(value){
-            case "1":
+        int option;
+        try{
+            option = Integer.parseInt(value);
+        }
+        catch (NumberFormatException e){
+            System.out.println("Input was not valid: " + e.getMessage());
+            return false;
+        }
+        switch(option){
+            case 1:
                 this.changeRationsFilling();
                 break;
                 
-            case "2":
+            case 2:
                 this.changeRationsMeager();
                 break;
                 
-            case "3":
+            case 3:
                 this.changeRationsBones();
                 break;    
                 
-            case "C":
+            case 4:
                 this.continueGame();
                 break;
                 

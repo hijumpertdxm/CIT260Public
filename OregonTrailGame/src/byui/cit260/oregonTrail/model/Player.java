@@ -7,6 +7,7 @@ package byui.cit260.oregonTrail.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -16,19 +17,28 @@ import java.util.Objects;
 public class Player implements Serializable{
     //class instance variables
     private String name;
+    private String[] partyMemberNames = new String[5];
     private double highScore;
     private int occupation;
     private ArrayList<Game> games = new ArrayList<Game>();
 
     public Player() {
     }
-    
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String[] getPartyMemberNames() {
+        return partyMemberNames;
+    }
+
+    public void setPartyMemberNames(String[] partyMemberNames) {
+        this.partyMemberNames = partyMemberNames;
     }
 
     public double getHighScore() {
@@ -46,7 +56,7 @@ public class Player implements Serializable{
     public void setOccupation(int occupation) {
         this.occupation = occupation;
     }
-    
+
     public ArrayList<Game> getGames() {
         return games;
     }
@@ -54,14 +64,15 @@ public class Player implements Serializable{
     public void setGames(ArrayList<Game> games) {
         this.games = games;
     }
-    
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.name);
-        hash = 79 * hash + (int) (Double.doubleToLongBits(this.highScore) ^ (Double.doubleToLongBits(this.highScore) >>> 32));
-        hash = 79 * hash + this.occupation;
+        hash = 59 * hash + Objects.hashCode(this.name);
+        hash = 59 * hash + Arrays.deepHashCode(this.partyMemberNames);
+        hash = 59 * hash + (int) (Double.doubleToLongBits(this.highScore) ^ (Double.doubleToLongBits(this.highScore) >>> 32));
+        hash = 59 * hash + this.occupation;
+        hash = 59 * hash + Objects.hashCode(this.games);
         return hash;
     }
 
@@ -86,13 +97,18 @@ public class Player implements Serializable{
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
+        if (!Arrays.deepEquals(this.partyMemberNames, other.partyMemberNames)) {
+            return false;
+        }
+        if (!Objects.equals(this.games, other.games)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Player{" + "name=" + name + ", highScore=" + highScore + ", occupation=" + occupation + '}';
+        return "Player{" + "name=" + name + ", partyMemberNames=" + partyMemberNames + ", highScore=" + highScore + ", occupation=" + occupation + ", games=" + games + '}';
     }
-    
-    
+     
 }

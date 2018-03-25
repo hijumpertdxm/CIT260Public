@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package byui.cit260.oregonTrail.control;
+import byui.cit260.oregonTrail.exceptions.InventoryControlException;
 
 /**
  *
@@ -11,10 +12,10 @@ package byui.cit260.oregonTrail.control;
  */
 public class InventoryControl {
     
-    public static  double calcInventoryValue(double locationMultiplier, double sumInventoryBase){
+    public static  double calcInventoryValue(double locationMultiplier, double sumInventoryBase) throws InventoryControlException{
         
         if(locationMultiplier < 1 || locationMultiplier > 3){
-            return -1;
+            throw new InventoryControlException("string here");
         }
         
         if(sumInventoryBase < 237 || sumInventoryBase > 7050){

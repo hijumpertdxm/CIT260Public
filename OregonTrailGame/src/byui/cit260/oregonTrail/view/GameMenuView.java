@@ -5,6 +5,9 @@
  */
 package byui.cit260.oregonTrail.view;
 
+import byui.cit260.oregonTrail.model.Location;
+import byui.cit260.oregonTrail.model.PaceType;
+import byui.cit260.oregonTrail.model.RationType;
 import oregontrailgame.OregonTrailGame;
 
 /**
@@ -21,11 +24,11 @@ public class GameMenuView extends View{
         +"\n====================================================="
         +"\nLocation: " //Need to setup locations first
         +"\nDate: "
-        +"\nWeather: "
-        +"\nHealth: "  //+ OregonTrailGame.getCurrentGame().getStatus().getPartyhealth());
-        +"\nPace: "   //+ OregonTrailGame.getCurrentGame().getStatus().getPace());
-        +"\nRations: "  //+ OregonTrailGame.getCurrentGame().getStatus().getRation() + "\n");
-        +"\n1. Continue on trail"
+        +"\nWeather: " + OregonTrailGame.getCurrentGame().getStatus().getWeather().getName()
+        +"\nHealth: "  + OregonTrailGame.getCurrentGame().getStatus().getPartyhealth().name()
+        +"\nPace: "   + OregonTrailGame.getCurrentGame().getStatus().getPace()
+        +"\nRations: "  + OregonTrailGame.getCurrentGame().getStatus().getRation()
+        +"\n\n1. Continue on trail"
         +"\n2. Check supplies"
         +"\n3. Display the map"
         +"\n4. Change pace"
@@ -43,33 +46,42 @@ public class GameMenuView extends View{
         
         //Set as first element and uppercase it
         value = value.toUpperCase();
+        //Convert to Number
+        int option;
+        try{
+            option = Integer.parseInt(value);
+        }
+        catch (NumberFormatException e){
+            System.out.println("Input was not valid: " + e.getMessage());
+            return false;
+        }
         
-        switch(value){
-            case "1":
+        switch(option){
+            case 1:
                 this.continueTrail();
                 break;
                 
-            case "2":
+            case 2:
                 this.checkSupplies();
                 break;
                 
-            case "3":
+            case 3:
                 this.displayMap();
                 break;
                 
-            case "4":
+            case 4:
                 this.changePace();
                 break;
                 
-            case "5":
+            case 5:
                 this.changeRations();
                 break;
                 
-            case "6":
+            case 6:
                 this.rest();
                 break;
                 
-            case "7":
+            case 7:
                 this.hunt();
                 break;
                 
@@ -85,20 +97,37 @@ public class GameMenuView extends View{
     }
 
     private void checkSupplies() {
-        System.out.println("checkSupplies() was called from the game menu");
+        //Go to Check Supplies View
+        CheckSuppliesView checkSuppliesView = new CheckSuppliesView();
+        checkSuppliesView.display();
     }
 
     private void displayMap() {
-        System.out.println("displayMap() was called from the game menu");
+        String maps = "";
+        Location[] locations = OregonTrailGame.getCurrentGame().getLocations();
+        for(int i=0; i <= locations.length - 1; i++){
+            maps += "\n" + locations[i].getName() + " at Mile Marker: " + locations[i].getMileMarker() + "";
+        }
+        ViewMapView viewMap = new ViewMapView(maps);
+        viewMap.display();
     }
 
     private void changePace() {
-        System.out.println("changePace() was called from the game menu");
+        String pacing = "";
+        for(PaceType pace: PaceType.values()){
+            pacing += "\n" + (pace.ordinal() + 1) + ". " + pace.name();
+        }
+        ChangePaceView paceView = new ChangePaceView(pacing);
+        paceView.display();
     }
 
     private void changeRations() {
         //Go to Change Rations View
-        ChangeRationsView changeRationsView = new ChangeRationsView();
+        String rations = "";
+        for(RationType ration: RationType.values()){
+            rations += "\n" + (ration.ordinal() + 1) + ". " + ration.name();
+        }        
+        ChangeRationsView changeRationsView = new ChangeRationsView(rations);
         changeRationsView.display();
     }
 

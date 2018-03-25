@@ -5,6 +5,9 @@
  */
 package byui.cit260.oregonTrail.view;
 
+import byui.cit260.oregonTrail.control.StatusControl;
+import byui.cit260.oregonTrail.model.PaceType;
+
 
 /**
  *
@@ -13,13 +16,11 @@ package byui.cit260.oregonTrail.view;
 public class ChangePaceView extends View{      
     
 
-        public ChangePaceView() {
+        public ChangePaceView(String text) {
            super (
            "==========The Oregon Trail=========="
         +"\nYou can change pace as follows: \n"
-        +"\n1. Staedy"
-        +"\n2. Strenuou"
-        +"\n3. Gruelling"
+        + text
         +"\nC. Continue the game"
         +"\n-----What is your choice?"
         +"\n===================================="
@@ -63,15 +64,21 @@ public class ChangePaceView extends View{
     }
 
         private void changePaceSteady() {
-          System.out.println("The pace has been changed to steady");  
+            int success = StatusControl.changePace(PaceType.Steady);
+            //TODO: need to return error here
+            System.out.println("The pace has been changed to steady");  
         }
 
         private void changePaceStrenuous() {
-           System.out.println("The pace has been changed to strenuous");
+            int success = StatusControl.changePace(PaceType.Strenuous);
+            //TODO: need to return error here
+            System.out.println("The pace has been changed to strenuous"); 
         }
 
         private void changePaceGruelling() {
-         System.out.println("The pace has been changed to gruelling");      
+            int success = StatusControl.changePace(PaceType.Gruelling);
+            //TODO: need to return error here
+            System.out.println("The pace has been changed to gruelling");      
         }
     
    }

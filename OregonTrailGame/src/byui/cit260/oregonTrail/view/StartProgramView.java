@@ -5,6 +5,7 @@
  */
 package byui.cit260.oregonTrail.view;
 import byui.cit260.oregonTrail.control.GameControl;
+import byui.cit260.oregonTrail.exceptions.GameControlException;
 import byui.cit260.oregonTrail.model.Player;
 import java.util.Scanner;
 
@@ -12,51 +13,26 @@ import java.util.Scanner;
  *
  * @author SysAdmin
  */
-public class StartProgramView {
-
-    public StartProgramView() {
-    }
-    public void displayStartProgramView() {
-        boolean endOfView = false;
-        
-        do{
-            String[] inputs = this.getInputs();
-            if((inputs.length < 1) || (inputs[0].toUpperCase().equals("Q"))){
-                return;
-            }
-            endOfView = doAction(inputs);
-        }while(endOfView != true);
+public class StartProgramView extends View{
+    
+    public StartProgramView(){
+        super("\n"
+                + "Please enter the player's name below:\n");
     }
     
-    private String[] getInputs(){
+    @Override
+    public boolean doAction(String value){
         
-        String[] inputs = new String[1];
-        
-        boolean valid = false;
-        while(valid == false){
-            System.out.println("Please enter the player's name below:");
-            Scanner scanner = new Scanner(System.in);
-            
-            //user string input
-            String userInput = scanner.nextLine().trim();
-            
-            if(userInput.length() < 1){
-                System.out.println("You must enter a non-blank value");
-                continue;
-            }
-            
-            inputs[0] = userInput;
-            valid = true;
+        String playersName = value;
+        Player player = new Player();
+        try{
+        player = GameControl.savePlayer(playersName);
         }
-        
-        return inputs;
-    }
-    
-    private boolean doAction(String[] inputs){
-        
-        String playersName = inputs[0];
-        Player player = GameControl.savePlayer(playersName);
-        
+        catch(GameControlException e){
+            System.out.println(e.getMessage());
+                    return  false;
+        }
+       
         if(player == null){
             System.out.println("Could not create the player. Please enter a different name.");
             return false;

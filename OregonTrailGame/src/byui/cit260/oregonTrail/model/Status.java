@@ -15,28 +15,28 @@ import java.util.Objects;
 public class Status implements Serializable{
        
     //class instance variables
-    private String ration;
-    private String pace;
+    private RationType ration;
+    private PaceType pace;
     private double money;
     private PartyHealth partyhealth;
     private Weather weather;
 
     public Status() {
     }
-    
-    public String getRation() {
+
+    public RationType getRation() {
         return ration;
     }
 
-    public void setRation(String ration) {
+    public void setRation(RationType ration) {
         this.ration = ration;
     }
 
-    public String getPace() {
+    public PaceType getPace() {
         return pace;
     }
 
-    public void setPace(String pace) {
+    public void setPace(PaceType pace) {
         this.pace = pace;
     }
 
@@ -66,15 +66,15 @@ public class Status implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 13 * hash + Objects.hashCode(this.ration);
-        hash = 13 * hash + Objects.hashCode(this.pace);
-        hash = 13 * hash + Objects.hashCode(this.money);
-        hash = 13 * hash + Objects.hashCode(this.partyhealth);
-        hash = 13 * hash + Objects.hashCode(this.weather);
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.ration);
+        hash = 41 * hash + Objects.hashCode(this.pace);
+        hash = 41 * hash + (int) (Double.doubleToLongBits(this.money) ^ (Double.doubleToLongBits(this.money) >>> 32));
+        hash = 41 * hash + Objects.hashCode(this.partyhealth);
+        hash = 41 * hash + Objects.hashCode(this.weather);
         return hash;
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -87,19 +87,22 @@ public class Status implements Serializable{
             return false;
         }
         final Status other = (Status) obj;
-        if (!Objects.equals(this.ration, other.ration)) {
+        if (Double.doubleToLongBits(this.money) != Double.doubleToLongBits(other.money)) {
             return false;
         }
-        if (!Objects.equals(this.pace, other.pace)) {
+        if (this.ration != other.ration) {
             return false;
         }
-        if (!Objects.equals(this.money, other.money)) {
+        if (this.pace != other.pace) {
             return false;
         }
         if (this.partyhealth != other.partyhealth) {
             return false;
         }
-        return this.weather == other.weather;
+        if (this.weather != other.weather) {
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -107,6 +110,4 @@ public class Status implements Serializable{
         return "Status{" + "ration=" + ration + ", pace=" + pace + ", money=" + money + ", partyhealth=" + partyhealth + ", weather=" + weather + '}';
     }
     
-    
-
 }
