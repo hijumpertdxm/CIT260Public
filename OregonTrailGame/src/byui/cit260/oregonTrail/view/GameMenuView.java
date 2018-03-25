@@ -5,9 +5,13 @@
  */
 package byui.cit260.oregonTrail.view;
 
+import byui.cit260.oregonTrail.control.InventoryControl;
+import byui.cit260.oregonTrail.exceptions.InventoryControlException;
 import byui.cit260.oregonTrail.model.Location;
 import byui.cit260.oregonTrail.model.PaceType;
 import byui.cit260.oregonTrail.model.RationType;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import oregontrailgame.OregonTrailGame;
 
 /**
@@ -35,6 +39,7 @@ public class GameMenuView extends View{
         +"\n5. Change food rations"
         +"\n6. Stop to rest"
         +"\n7. Hunt"
+        +"\n8. Winning View"      
         +"\nQ. Quit"
         +"\n----What is your choice?"
         +"\n====================================================="
@@ -83,6 +88,10 @@ public class GameMenuView extends View{
                 
             case 7:
                 this.hunt();
+                break;
+                
+            case 8:
+                this.winningView();
                 break;
                 
             default:
@@ -136,8 +145,22 @@ public class GameMenuView extends View{
         stopToRestView.display();
     }
 
+    private void winningView() {
+       double possessions = 0.0; 
+       try {
+           //temporary hard-coding values so that it will somewhat function for now
+           possessions = InventoryControl.calcInventoryValue(OregonTrailGame.getCurrentGame().getMileMarker(), 
+                   InventoryControl.calcSumInventoryBase(20.0, 4.0, 5.0, 4.0, 10.0, 3.0, 15.0, 2.0, 4.0, 4.0, 1.0, 50.0, .5, 120.00));
+       } catch (InventoryControlException ex) {
+           System.out.println(ex.getMessage());
+       }
+        WinningView winView = new WinningView(possessions);
+        winView.display();
+                                
+    }
+
     private void hunt() {
-        System.out.println("hunt() was called from the game menu");
+        System.out.println("The hunt view was called");
     }
     
 }

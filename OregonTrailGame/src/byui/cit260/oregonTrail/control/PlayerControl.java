@@ -5,6 +5,7 @@
  */
 package byui.cit260.oregonTrail.control;
 
+import byui.cit260.oregonTrail.exceptions.PlayerControlException;
 import byui.cit260.oregonTrail.model.Player;
 import oregontrailgame.OregonTrailGame;
 
@@ -14,8 +15,12 @@ import oregontrailgame.OregonTrailGame;
  */
 public class PlayerControl {
 
-    public static void playerOccupation(int occupation) {
-        System.out.println("Eureka! Good job Edward!");
+    public static void playerOccupation(int occupation) throws PlayerControlException{
+        Player player = OregonTrailGame.getPlayer();
+        if(occupation < 1 || occupation > 3){
+            throw new PlayerControlException("That occupation does not exist!");
+        }
+        player.setOccupation(occupation);
     }
 
     public static int addPartyMember(String value) {

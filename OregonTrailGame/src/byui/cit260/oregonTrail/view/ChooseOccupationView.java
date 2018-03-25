@@ -6,6 +6,7 @@
 package byui.cit260.oregonTrail.view;
 
 import byui.cit260.oregonTrail.control.PlayerControl;
+import byui.cit260.oregonTrail.exceptions.PlayerControlException;
 
 /**
  *
@@ -55,6 +56,11 @@ public class ChooseOccupationView extends View {
     }
 
     private void setOccupation(int occupation) {
-        PlayerControl.playerOccupation(occupation);
+        try{
+            PlayerControl.playerOccupation(occupation);
+        }
+        catch (PlayerControlException e){
+            System.out.println(e.getMessage());
+        }
     }
 }
