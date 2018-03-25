@@ -39,7 +39,9 @@ public class GameMenuView extends View{
         +"\n5. Change food rations"
         +"\n6. Stop to rest"
         +"\n7. Hunt"
-        +"\n8. Winning View"      
+        +"\n8. Winning View"   
+        +"\n9. Occupation Set" 
+        +"\n10. Wagon Party Set"
         +"\nQ. Quit"
         +"\n----What is your choice?"
         +"\n====================================================="
@@ -92,6 +94,14 @@ public class GameMenuView extends View{
                 
             case 8:
                 this.winningView();
+                break;
+                
+            case 9:
+                this.occupationView();
+                break;
+                
+            case 10:
+                this.wagonParty();
                 break;
                 
             default:
@@ -161,6 +171,16 @@ public class GameMenuView extends View{
 
     private void hunt() {
         System.out.println("The hunt view was called");
+    }
+
+    private void occupationView() {
+        ChooseOccupationView occupationView = new ChooseOccupationView();
+        occupationView.display();
+    }
+
+    private void wagonParty() {
+        ChooseWagonPartyView wagonSetView = new ChooseWagonPartyView();
+        wagonSetView.display();
     }
     
 }

@@ -16,14 +16,20 @@ import oregontrailgame.OregonTrailGame;
 public class PlayerControl {
 
     public static void playerOccupation(int occupation) throws PlayerControlException{
-        Player player = OregonTrailGame.getPlayer();
+        
         if(occupation < 1 || occupation > 3){
             throw new PlayerControlException("That occupation does not exist!");
         }
+        Player player = OregonTrailGame.getPlayer();
         player.setOccupation(occupation);
+        
     }
 
-    public static int addPartyMember(String value) {
+    public static int addPartyMember(String value) throws PlayerControlException {
+        
+        if(value == null || value.length() == 0){
+            throw new PlayerControlException("You must enter a name.");
+        }
         
         //number of party members that are set
         int setMembers = 0;
