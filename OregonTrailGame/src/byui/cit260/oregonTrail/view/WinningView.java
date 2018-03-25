@@ -5,6 +5,10 @@
  */
 package byui.cit260.oregonTrail.view;
 
+import byui.cit260.oregonTrail.control.InventoryControl;
+import byui.cit260.oregonTrail.exceptions.InventoryControlException;
+import oregontrailgame.OregonTrailGame;
+
 /**
  *
  * @author ayami
@@ -12,27 +16,34 @@ package byui.cit260.oregonTrail.view;
 public class WinningView extends View{
     
     public WinningView() {
+        try {
     
-        super (
+     
+        super(
         "\n====================================================="
-        +"\n| *************** The Organ Trail  ***************" 
+        +"\n| *************** The Oregon Trail  ***************" 
         +"\n======================================================"
         +"\n  ***************Congratulations!***************"
         +"\nYou have succesfully traveled"
         +"\nfrom Independence, Missouri to Oregon"
         +"\nFinal Results:"
-        +"\nRemaining wagon members:         XX"
-        +"\nTotal remaining possesions:      XX"
-        +"\nTotal remaining cash:            XX"
+        +"\nWagon Members Still Living:     "
+        +"\nValue of Remaining Possessions: "+
+                        InventoryControl.calcInventoryValue(OregonTrailGame.getCurrentGame().getMileMarker(),InventoryControl.calcSumInventoryBase(
+                                                    20.0, 4.0, 5.0, 4.0, 10.0, 3.0, 15.0, 2.0, 4.0, 4.0, 1.0, 50.0, .5, 120.00))
+        +"\nTotal Remaining Cash:           "
         +"\n"
-        +"\nInitial profession Bonus:        x2"
+        +"\nProfession Bonus:               "
         +"\n"
-        +"\nFinal Score:                   XXXX"        
+        +"\nFinal Score:                    "    
         +"\n"
         +"\n N. Start a New Game"
         +"\n E. Exit the game"        
         +"\n ---- What is your choice?                            "           
         );
+    }
+        catch (InventoryControlException e) {
+        }
 }
 //Second part
 @Override

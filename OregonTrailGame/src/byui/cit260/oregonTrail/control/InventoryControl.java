@@ -31,7 +31,7 @@ public class InventoryControl {
     public static double calcSumInventoryBase(double basePriceOxen, double numberOxen, double basePriceWheels, double numberWheels, 
                                                double basePriceAxles, double numberAxles, double basePriceTongues, double numberTongues,
                                                double basePriceClothes, double numberClothes, double basePriceAmmunition, double numberAmmunition,
-                                               double basePriceFood, double numberFood){
+                                               double basePriceFood, double numberFood)throws InventoryControlException{
         
         //Check each item for a value error
         if(basePriceOxen < 20 || basePriceOxen > 20){
