@@ -21,7 +21,7 @@ public class ChangePaceView extends View{
            "==========The Oregon Trail=========="
         +"\nYou can change pace as follows: \n"
         + text
-        +"\nC. Continue the game"
+        +"\n4. Continue the game"
         +"\n-----What is your choice?"
         +"\n===================================="
            );
@@ -33,29 +33,29 @@ public class ChangePaceView extends View{
         //Set as first element and uppercase it
         value = value.toUpperCase();
         
-        int paceTest;
+        int option;
         try{
-            paceTest = Integer.parseInt(value);
+           option = Integer.parseInt(value);
         }
         catch (NumberFormatException e){
             System.out.println("Your input was not valid: " + e.getMessage());
             return false;
         }
         
-        switch(value){
-            case "1":
+        switch(option){
+            case 1:
                 this.changePaceSteady();
                 break;
                 
-            case "2":
+            case 2:
                 this.changePaceStrenuous();
                 break;
                 
-            case "3":
+            case 3:
                 this.changePaceGruelling();
                 break;    
                 
-            case "C":
+            case 4:
                 this.continueGame();
                 break;
                 
