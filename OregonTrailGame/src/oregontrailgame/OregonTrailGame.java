@@ -17,6 +17,9 @@ public class OregonTrailGame {
 
     private static Game currentGame = null;
     private static Player player = null;
+    
+    private static PrintWriter outFile = null;
+    private static BufferedReader inFile = null;
 
     public static Game getCurrentGame() {
         return currentGame;
@@ -33,9 +36,31 @@ public class OregonTrailGame {
     public static void setPlayer(Player player) {
         OregonTrailGame.player = player;
     }
+
+    public static PrintWriter getOutFile() {
+        return outFile;
+    }
+
+    public static void setOutFile(PrintWriter outFile) {
+        OregonTrailGame.outFile = outFile;
+    }
+
+    public static BufferedReader getInFile() {
+        return inFile;
+    }
+
+    public static void setInFile(BufferedReader inFile) {
+        OregonTrailGame.inFile = inFile;
+    }
     
     public static void main(String[] args) {
        try{
+           
+       OregonTrailGame.inFile =
+               new BufferedReader(new InputStreamReader(System.in));
+       
+       OregonTrailGame.outFile = new PrintWriter(System.out, true);
+           
        StartProgramView startProgramView = new StartProgramView();
        startProgramView.display();
        }
@@ -44,6 +69,13 @@ public class OregonTrailGame {
            e.printStackTrace();
            return;
        }
+       
+       finally {
+           OregonTrailGame.inFile.close();
+           OregonTrailGame.outFile.close();
+       } catch (IOException ex) {
+               Logger.getLogger(OregonTrailGame.class.getName()).log(Level.S.....);
+               }
     }
     
 }
