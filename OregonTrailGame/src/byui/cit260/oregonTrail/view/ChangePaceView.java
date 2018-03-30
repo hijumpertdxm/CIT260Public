@@ -6,7 +6,10 @@
 package byui.cit260.oregonTrail.view;
 
 import byui.cit260.oregonTrail.control.StatusControl;
+import byui.cit260.oregonTrail.exceptions.StatusControlException;
 import byui.cit260.oregonTrail.model.PaceType;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -38,7 +41,7 @@ public class ChangePaceView extends View{
            option = Integer.parseInt(value);
         }
         catch (NumberFormatException e){
-            System.out.println("Your input was not valid: " + e.getMessage());
+            ErrorView.display(this.getClass().getName(), "Your input was not valid: " + e.getMessage());
             return false;
         }
         
@@ -60,7 +63,7 @@ public class ChangePaceView extends View{
                 break;
                 
             default:
-              System.out.println("Invalid menu item");
+              ErrorView.display(this.getClass().getName(), "Invalid menu item");
         }
         
         return false;
@@ -74,21 +77,30 @@ public class ChangePaceView extends View{
 
     //I get these errors when I remove the "return 1" in Status control class and change the method to void:
         private void changePaceSteady() {
-            int success = StatusControl.changePace(PaceType.Steady);
-            //TODO: need to return error here
-            System.out.println("The pace has been changed to steady");  
+            try {
+                StatusControl.changePace(PaceType.Steady);
+            } catch (StatusControlException ex) {
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
+            }
+            ErrorView.display(this.getClass().getName(), "The pace has been changed to steady");
         }
 
         private void changePaceStrenuous() {
-            int success = StatusControl.changePace(PaceType.Strenuous);
-            //TODO: need to return error here
-            System.out.println("The pace has been changed to strenuous"); 
+            try {
+                StatusControl.changePace(PaceType.Strenuous);
+            } catch (StatusControlException ex) {
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
+            }
+            ErrorView.display(this.getClass().getName(), "The pace has been changed to strenuous");
         }
 
         private void changePaceGruelling() {
-            int success = StatusControl.changePace(PaceType.Gruelling);
-            //TODO: need to return error here
-            System.out.println("The pace has been changed to gruelling");      
+            try {
+                StatusControl.changePace(PaceType.Gruelling);
+            } catch (StatusControlException ex) {
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
+            }
+            ErrorView.display(this.getClass().getName(), "The pace has been changed to gruelling");   
         }
     
    }

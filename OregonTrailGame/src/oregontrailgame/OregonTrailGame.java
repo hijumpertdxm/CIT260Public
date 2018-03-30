@@ -8,6 +8,13 @@ package oregontrailgame;
 import byui.cit260.oregonTrail.model.Game;
 import byui.cit260.oregonTrail.model.Player;
 import byui.cit260.oregonTrail.view.StartProgramView;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import sun.util.logging.PlatformLogger;
 
 /**
  *
@@ -19,6 +26,7 @@ public class OregonTrailGame {
     private static Player player = null;
     
     private static PrintWriter outFile = null;
+    private static PrintWriter logFile = null;
     private static BufferedReader inFile = null;
 
     public static Game getCurrentGame() {
@@ -52,14 +60,24 @@ public class OregonTrailGame {
     public static void setInFile(BufferedReader inFile) {
         OregonTrailGame.inFile = inFile;
     }
+
+    public static PrintWriter getLogFile() {
+        return logFile;
+    }
+
+    public static void setLogFile(PrintWriter logFile) {
+        OregonTrailGame.logFile = logFile;
+    }
+    
     
     public static void main(String[] args) {
        try{
            
-       OregonTrailGame.inFile =
-               new BufferedReader(new InputStreamReader(System.in));
+       inFile = new BufferedReader(new InputStreamReader(System.in));
        
-       OregonTrailGame.outFile = new PrintWriter(System.out, true);
+       outFile = new PrintWriter(System.out, true);
+       
+       logFile = new PrintWriter("logFile.txt");
            
        StartProgramView startProgramView = new StartProgramView();
        startProgramView.display();
@@ -71,11 +89,20 @@ public class OregonTrailGame {
        }
        
        finally {
-           OregonTrailGame.inFile.close();
-           OregonTrailGame.outFile.close();
-       } catch (IOException ex) {
-               Logger.getLogger(OregonTrailGame.class.getName()).log(Level.S.....);
-               }
+            try{
+                if (inFile != null)
+                    inFile.close();
+                
+                if (outFile != null)
+                    outFile.close();
+                
+                if (logFile != null)
+                    logFile.close();
+            } 
+            catch (IOException ex) {
+                System.out.println("Error closing the files!");
+                return;
+            }
+        }
     }
-    
 }
