@@ -18,6 +18,16 @@ import byui.cit260.oregonTrail.model.Status;
 import byui.cit260.oregonTrail.model.Weather;
 import oregontrailgame.OregonTrailGame;
 import byui.cit260.oregonTrail.exceptions.GameControlException;
+import byui.cit260.oregonTrail.view.ErrorView;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -175,6 +185,29 @@ public class GameControl {
         inventory[ItemType.SpareParts.ordinal()] = itemFive;
  
         return inventory;
+    }
+
+    public static void saveGame(Game game, String filePath) throws GameControlException, IOException {
+        
+        if(filePath == null || filePath.length() < 1){
+            throw new GameControlException("You put in an invalid path, please try again.");
+        }
+        
+        ObjectOutputStream saveGame = new ObjectOutputStream(new FileOutputStream(filePath));
+        saveGame.writeObject(game);
+    }
+
+    public static void getGame(String filePath) throws GameControlException, IOException, ClassNotFoundException{
+        if(filePath == null || filePath.length() < 1){
+            throw new GameControlException("You put in an invalid path, please try again.");
+        }
+        
+        ObjectInputStream getGame = new ObjectInputStream(new FileInputStream(filePath));
+        
+        Game game = (Game) getGame.readObject();
+        OregonTrailGame.setCurrentGame(game);
+        OregonTrailGame.setPlayer(game.getPlayer());
+        
     }
     
 }

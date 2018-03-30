@@ -7,42 +7,47 @@ package byui.cit260.oregonTrail.view;
 
 import byui.cit260.oregonTrail.control.GameControl;
 import byui.cit260.oregonTrail.exceptions.GameControlException;
-import byui.cit260.oregonTrail.exceptions.MapControlException;
 import byui.cit260.oregonTrail.model.Game;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import oregontrailgame.OregonTrailGame;
 
 /**
  *
- * @author Roller
+ * @author ayami
  */
-public class StartExistingGameView extends View {
+public class SaveGameView extends View {
+    
+    protected final BufferedReader keyboard = OregonTrailGame.getInFile();
+    protected final PrintWriter console = OregonTrailGame.getOutFile();
 
-    public  StartExistingGameView() {
-        
-        super(                
-            "displayStartExistingGameView was called"
-         + "\n====================================================="
-         + "\nGive us the path of the game you want to restart."
-         + "\n====================================================="
-        );
+    public SaveGameView (){
+    
+       super (
+        "==========The Oregon Trail=========="
+        +"\n To save the game please input a file name path."
+        +"\n-----What is your choice?"
+        +"\n===================================="
+            
+       );
+
     }
-
+    
     @Override
     public boolean doAction(String value){
         
         String filePath = value;
+        Game game = OregonTrailGame.getCurrentGame();
         try{
-            GameControl.getGame(filePath);
-        } catch (GameControlException | IOException | ClassNotFoundException e){
+            GameControl.saveGame(game, filePath);
+        } catch (GameControlException | IOException e){
             ErrorView.display(this.getClass().getName(), "Error: " + e.getMessage());
             return false;
         }
         
-        GameMenuView gameMenuView = new GameMenuView();
-        gameMenuView.display();
         return true;
     }
     

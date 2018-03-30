@@ -44,7 +44,7 @@ public class ChooseWagonPartyView extends View{
             partyNum = PlayerControl.addPartyMember(value);
         }
         catch (PlayerControlException e){
-            System.out.println(e.getMessage());
+            ErrorView.display(this.getClass().getName(), e.getMessage());
         }
         return partyNum;
     }

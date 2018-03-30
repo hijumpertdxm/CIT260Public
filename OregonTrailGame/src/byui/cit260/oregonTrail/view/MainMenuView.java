@@ -63,11 +63,11 @@ public class MainMenuView extends View {
             GameControl.createNewGame(OregonTrailGame.getPlayer());
         }
         catch(MapControlException e){
-            System.out.println(e.getMessage());
+            ErrorView.display(this.getClass().getName(), e.getMessage());
             return; //take this return out and it propagates up to the main function and returns null
         }
         catch (Throwable e){
-            System.out.println(e.getMessage());
+            ErrorView.display(this.getClass().getName(), e.getMessage());
             e.printStackTrace();
             return;
         }

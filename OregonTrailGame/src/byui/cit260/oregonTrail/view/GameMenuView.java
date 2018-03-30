@@ -42,6 +42,7 @@ public class GameMenuView extends View{
         +"\n8. Winning View"   
         +"\n9. Occupation Set" 
         +"\n10. Wagon Party Set"
+        +"\n11. Save the game"
         +"\nQ. Quit"
         +"\n----What is your choice?"
         +"\n====================================================="
@@ -104,6 +105,10 @@ public class GameMenuView extends View{
                 this.wagonParty();
                 break;
                 
+            case 11:
+                this.saveGame();
+                break;
+                
             default:
               ErrorView.display(this.getClass().getName(), "Invalid menu item");
         }
@@ -162,7 +167,7 @@ public class GameMenuView extends View{
            possessions = InventoryControl.calcInventoryValue(OregonTrailGame.getCurrentGame().getMileMarker(), 
                    InventoryControl.calcSumInventoryBase(20.0, 4.0, 5.0, 4.0, 10.0, 3.0, 15.0, 2.0, 4.0, 4.0, 1.0, 50.0, .5, 120.00));
        } catch (InventoryControlException ex) {
-           System.out.println(ex.getMessage());
+           ErrorView.display(this.getClass().getName(), ex.getMessage());
        }
         WinningView winView = new WinningView(possessions);
         winView.display();
@@ -181,6 +186,11 @@ public class GameMenuView extends View{
     private void wagonParty() {
         ChooseWagonPartyView wagonSetView = new ChooseWagonPartyView();
         wagonSetView.display();
+    }
+
+    private void saveGame() {
+        SaveGameView saveView = new SaveGameView();
+        saveView.display();
     }
     
 }

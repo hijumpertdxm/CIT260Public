@@ -73,7 +73,7 @@ public class ChooseOccupationView extends View {
             PlayerControl.playerOccupation(occupation);
         }
         catch (PlayerControlException e){
-            System.out.println(e.getMessage());
+            ErrorView.display(this.getClass().getName(), e.getMessage());
         }
     }
 }
