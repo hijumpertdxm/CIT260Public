@@ -40,7 +40,7 @@ public class ChooseOccupationView extends View {
             num = Integer.parseInt(value);
         }
         catch (NumberFormatException e){
-            System.out.println("Input was not valid: " + e.getMessage());
+            ErrorView.display(this.getClass().getName(), "Your input was not valid: " + e.getMessage());
             return false;
         }
         
@@ -62,7 +62,7 @@ public class ChooseOccupationView extends View {
                 break;
                 
             default:
-              System.out.println("Invalid menu item");
+              ErrorView.display(this.getClass().getName(), "Invalid menu item");
         }
         
         return true;

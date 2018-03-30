@@ -61,7 +61,7 @@ public class MattGeneralStoreView extends  View{
                 break;
                 
             default:
-              System.out.println("Invalid Store item");
+              ErrorView.display(this.getClass().getName(), "Invalid menu item");
         }   
         return false;
         }    

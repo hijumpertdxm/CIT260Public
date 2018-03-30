@@ -64,7 +64,7 @@ public class ChooseMonthToStartView extends View{
                 return true;
                 
             default:
-              System.out.println("Invalid month");
+              ErrorView.display(this.getClass().getName(), "Invalid month");
         }
         
         return false;

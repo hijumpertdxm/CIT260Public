@@ -41,7 +41,7 @@ public class LosingView extends View{
                 break;
                 
             default:
-              System.out.println("Invalid menu item");
+              ErrorView.display(this.getClass().getName(), "Invalid menu item");
         }   
         return false;
         }    

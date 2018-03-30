@@ -75,7 +75,6 @@ public class ChangePaceView extends View{
         gameMenuView.display();
     }
 
-    //I get these errors when I remove the "return 1" in Status control class and change the method to void:
         private void changePaceSteady() {
             try {
                 StatusControl.changePace(PaceType.Steady);

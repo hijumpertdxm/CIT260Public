@@ -34,7 +34,7 @@ public class StartProgramView extends View{
         }
        
         if(player == null){
-            System.out.println("Could not create the player. Please enter a different name.");
+            ErrorView.display(this.getClass().getName(), "Could not create the player. Please enter a different name.");
             return false;
         }
         
