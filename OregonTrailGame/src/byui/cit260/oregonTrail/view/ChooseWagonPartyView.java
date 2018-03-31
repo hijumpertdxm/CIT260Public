@@ -6,6 +6,7 @@
 package byui.cit260.oregonTrail.view;
 
 import byui.cit260.oregonTrail.control.PlayerControl;
+import byui.cit260.oregonTrail.exceptions.PlayerControlException;
 import oregontrailgame.OregonTrailGame;
 
 public class ChooseWagonPartyView extends View{
@@ -38,7 +39,14 @@ public class ChooseWagonPartyView extends View{
     }
 
     private int setPartyMemberName(String value) {
-        return PlayerControl.addPartyMember(value);
+        int partyNum = 0;
+        try{
+            partyNum = PlayerControl.addPartyMember(value);
+        }
+        catch (PlayerControlException e){
+            ErrorView.display(this.getClass().getName(), e.getMessage());
+        }
+        return partyNum;
     }
 
 }

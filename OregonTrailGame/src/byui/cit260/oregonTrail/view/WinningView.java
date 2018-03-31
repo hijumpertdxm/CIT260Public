@@ -16,7 +16,7 @@ import oregontrailgame.OregonTrailGame;
 public class WinningView extends View{
     
     public WinningView() throws InventoryControlException {
-        
+
         super(
         "\n====================================================="
         +"\n| *************** The Oregon Trail  ***************" 
@@ -55,7 +55,7 @@ public class WinningView extends View{
                 break;
                 
             default:
-              System.out.println("Invalid menu item");
+              ErrorView.display(this.getClass().getName(), "Invalid menu item");
         }   
         return false;
         }    

@@ -9,22 +9,21 @@ import byui.cit260.oregonTrail.model.PaceType;
 import byui.cit260.oregonTrail.model.PartyHealth;
 import byui.cit260.oregonTrail.model.Status;
 import oregontrailgame.OregonTrailGame;
+import byui.cit260.oregonTrail.exceptions.StatusControlException;
 
 /**
  *
  * @author Roller
  */
-public class StatusControl {
+public class StatusControl{
     
-    public static int changePace(PaceType pace){
+    public static void changePace(PaceType pace) throws StatusControlException {
         
         if(pace == null){
-            return -1; //fails
+            throw new StatusControlException("Pace has not been specified.");
         }
         
         Status status = OregonTrailGame.getCurrentGame().getStatus();
         status.setPace(pace);
-        
-        return 1; // indicates success 
     }
 }

@@ -37,7 +37,7 @@ public class ChangeRationsView extends View{
             option = Integer.parseInt(value);
         }
         catch (NumberFormatException e){
-            System.out.println("Input was not valid: " + e.getMessage());
+            ErrorView.display(this.getClass().getName(), "Your input was not valid: " + e.getMessage());
             return false;
         }
         switch(option){
@@ -58,7 +58,7 @@ public class ChangeRationsView extends View{
                 break;
                 
             default:
-              System.out.println("Invalid menu item");
+              ErrorView.display(this.getClass().getName(), "Invalid menu item");
         }
         
         return false;

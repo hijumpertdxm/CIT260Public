@@ -5,7 +5,9 @@
  */
 package byui.cit260.oregonTrail.view;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
+import oregontrailgame.OregonTrailGame;
 
 /**
  *
@@ -14,6 +16,9 @@ import java.util.Scanner;
 public abstract class View implements ViewInterface{
  
     protected String displayMessage;
+    
+    protected final BufferedReader keyboard = OregonTrailGame.getInFile();
+    protected final PrintWriter console = OregonTrailGame.getOutFile();
     
     public View() {
   
@@ -38,35 +43,32 @@ public abstract class View implements ViewInterface{
 
     @Override
     public String getInput() {
-        Scanner keyboard = new Scanner(System.in);
         boolean valid = false;
         String value = null;
-        
-        //while a valid name has not bee retrieved
-        while (!valid) {
-            
-            // prompt for the player's name
-            System.out.println("\n" + this.displayMessage);
-            
-            // get the value entered from the keyboard
-            value = keyboard.nextLine();
-            value = value.trim();
-            
-            if (value.length() < 1) { //blank value entered
-                System.out.println("\n*** You must enter a value *** ");
-                continue;
+        try{
+            //while a valid name has not bee retrieved
+            while (!valid) {
+
+                // prompt for the player's name
+                this.console.println("\n" + this.displayMessage);
+
+                // get the value entered from the keyboard
+                value = this.keyboard.readLine();
+                value = value.trim();
+
+                if (value.length() < 1) { //blank value entered
+                    this.console.println("\n*** You must enter a value *** ");
+                    continue;
+                }
+
+                break;
             }
-            
-            break;
+        }
+        catch (Exception e){
+            ErrorView.display(this.getClass().getName(), "Error reading the input: " + e.getMessage());
         }
         
         return value; //return the name
     }
 
-
-    //@Override
-    //public abstract void display();
-    
-   
-    
 }

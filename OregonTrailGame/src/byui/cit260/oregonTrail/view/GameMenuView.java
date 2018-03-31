@@ -5,9 +5,13 @@
  */
 package byui.cit260.oregonTrail.view;
 
+import byui.cit260.oregonTrail.control.InventoryControl;
+import byui.cit260.oregonTrail.exceptions.InventoryControlException;
 import byui.cit260.oregonTrail.model.Location;
 import byui.cit260.oregonTrail.model.PaceType;
 import byui.cit260.oregonTrail.model.RationType;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import oregontrailgame.OregonTrailGame;
 
 /**
@@ -35,6 +39,10 @@ public class GameMenuView extends View{
         +"\n5. Change food rations"
         +"\n6. Stop to rest"
         +"\n7. Hunt"
+        +"\n8. Winning View"   
+        +"\n9. Occupation Set" 
+        +"\n10. Wagon Party Set"
+        +"\n11. Save the game"
         +"\nQ. Quit"
         +"\n----What is your choice?"
         +"\n====================================================="
@@ -52,7 +60,7 @@ public class GameMenuView extends View{
             option = Integer.parseInt(value);
         }
         catch (NumberFormatException e){
-            System.out.println("Input was not valid: " + e.getMessage());
+            ErrorView.display(this.getClass().getName(), "Your input was not valid: " + e.getMessage());
             return false;
         }
         
@@ -85,8 +93,24 @@ public class GameMenuView extends View{
                 this.hunt();
                 break;
                 
+            case 8:
+                this.winningView();
+                break;
+                
+            case 9:
+                this.occupationView();
+                break;
+                
+            case 10:
+                this.wagonParty();
+                break;
+                
+            case 11:
+                this.saveGame();
+                break;
+                
             default:
-              System.out.println("Invalid menu item");
+              ErrorView.display(this.getClass().getName(), "Invalid menu item");
         }
         
         return false;
@@ -136,8 +160,37 @@ public class GameMenuView extends View{
         stopToRestView.display();
     }
 
+    private void winningView() {
+       double possessions = 0.0; 
+       try {
+           //temporary hard-coding values so that it will somewhat function for now
+           possessions = InventoryControl.calcInventoryValue(OregonTrailGame.getCurrentGame().getMileMarker(), 
+                   InventoryControl.calcSumInventoryBase(20.0, 4.0, 5.0, 4.0, 10.0, 3.0, 15.0, 2.0, 4.0, 4.0, 1.0, 50.0, .5, 120.00));
+       } catch (InventoryControlException ex) {
+           ErrorView.display(this.getClass().getName(), ex.getMessage());
+       }
+        WinningView winView = new WinningView(possessions);
+        winView.display();
+                                
+    }
+
     private void hunt() {
-        System.out.println("hunt() was called from the game menu");
+        System.out.println("The hunt view was called");
+    }
+
+    private void occupationView() {
+        ChooseOccupationView occupationView = new ChooseOccupationView();
+        occupationView.display();
+    }
+
+    private void wagonParty() {
+        ChooseWagonPartyView wagonSetView = new ChooseWagonPartyView();
+        wagonSetView.display();
+    }
+
+    private void saveGame() {
+        SaveGameView saveView = new SaveGameView();
+        saveView.display();
     }
     
 }

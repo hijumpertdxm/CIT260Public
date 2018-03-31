@@ -5,6 +5,7 @@
  */
 package byui.cit260.oregonTrail.control;
 
+import byui.cit260.oregonTrail.exceptions.GameControlException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -19,9 +20,10 @@ public class GameControlTest {
 
     /**
      * Test of calcScore method, of class GameControl.
+     * @throws byui.cit260.oregonTrail.exceptions.GameControlException
      */
     @Test
-    public void testCalcScoreSuccess() {
+    public void testCalcScoreSuccess() throws GameControlException {
         System.out.println("calcScore");
         
         //Test Case - successful call
@@ -44,7 +46,7 @@ public class GameControlTest {
     }
     
     @Test
-    public void testCalcScoreInventoryValueLowerBound() {
+    public void testCalcScoreInventoryValueLowerBound() throws GameControlException {
         //Test Case - successful call
         System.out.println("\tTest Case 2: InventoryValue lower bound failure");
         
@@ -65,7 +67,7 @@ public class GameControlTest {
     }
     
     @Test
-    public void testCalcScoreInventoryValueUpperBound() {
+    public void testCalcScoreInventoryValueUpperBound() throws GameControlException {
         //Test Case - successful call
         System.out.println("\tTest Case 3: InventoryValue upper bound failure");
         
@@ -86,7 +88,7 @@ public class GameControlTest {
     }
     
     @Test
-    public void testCalcScoreMoneyLowerBound() {
+    public void testCalcScoreMoneyLowerBound() throws GameControlException {
         //Test Case - successful call
         System.out.println("\tTest Case 4: Money lower bound failure");
         
@@ -107,7 +109,7 @@ public class GameControlTest {
     }
     
     @Test
-    public void testCalcScoreMoneyUpperBound() {
+    public void testCalcScoreMoneyUpperBound() throws GameControlException {
         //Test Case - successful call
         System.out.println("\tTest Case 5: Money upper bound failure");
         
@@ -128,7 +130,7 @@ public class GameControlTest {
     }
     
     @Test
-    public void testCalcScorePartyHealthLowerBound() {
+    public void testCalcScorePartyHealthLowerBound() throws GameControlException {
         //Test Case - successful call
         System.out.println("\tTest Case 6: PartyHealth lower bound failure");
         
@@ -149,7 +151,7 @@ public class GameControlTest {
     }
     
     @Test
-    public void testCalcScorePartyHealthUpperBound() {
+    public void testCalcScorePartyHealthUpperBound() throws GameControlException {
         //Test Case - successful call
         System.out.println("\tTest Case 7: PartyHealth upper bound failure");
         
@@ -170,7 +172,7 @@ public class GameControlTest {
     }
     
     @Test
-    public void testCalcScoreOccupationLowerBound() {
+    public void testCalcScoreOccupationLowerBound() throws GameControlException {
         //Test Case - successful call
         System.out.println("\tTest Case 8: Occupation lower bound failure");
         
@@ -191,7 +193,7 @@ public class GameControlTest {
     }
     
     @Test
-    public void testCalcScoreOccupationUpperBound() {
+    public void testCalcScoreOccupationUpperBound() throws GameControlException {
         //Test Case - successful call
         System.out.println("\tTest Case 9: Occupation upper bound failure");
         
@@ -212,7 +214,7 @@ public class GameControlTest {
     }
     
     @Test
-    public void testCalcScorePartyNotDeadLowerBound() {
+    public void testCalcScorePartyNotDeadLowerBound() throws GameControlException {
         //Test Case - successful call
         System.out.println("\tTest Case 10: PartyNotDead lower bound failure");
         
@@ -233,7 +235,7 @@ public class GameControlTest {
     }
     
     @Test
-    public void testCalcScorePartyNotDeadUpperBound() {
+    public void testCalcScorePartyNotDeadUpperBound() throws GameControlException {
         //Test Case - successful call
         System.out.println("\tTest Case 11: PartyNotDead upper bound failure");
         

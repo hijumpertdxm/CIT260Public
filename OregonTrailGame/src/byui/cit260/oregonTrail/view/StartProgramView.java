@@ -29,12 +29,12 @@ public class StartProgramView extends View{
         player = GameControl.savePlayer(playersName);
         }
         catch(GameControlException e){
-            System.out.println(e.getMessage());
-                    return  false;
+            ErrorView.display(this.getClass().getName(), e.getMessage());
+            return  false;
         }
        
         if(player == null){
-            System.out.println("Could not create the player. Please enter a different name.");
+            ErrorView.display(this.getClass().getName(), "Could not create the player. Please enter a different name.");
             return false;
         }
         

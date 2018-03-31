@@ -6,7 +6,10 @@
 package byui.cit260.oregonTrail.view;
 
 import byui.cit260.oregonTrail.control.StatusControl;
+import byui.cit260.oregonTrail.exceptions.StatusControlException;
 import byui.cit260.oregonTrail.model.PaceType;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -21,7 +24,7 @@ public class ChangePaceView extends View{
            "==========The Oregon Trail=========="
         +"\nYou can change pace as follows: \n"
         + text
-        +"\nC. Continue the game"
+        +"\n4. Continue the game"
         +"\n-----What is your choice?"
         +"\n===================================="
            );
@@ -33,25 +36,34 @@ public class ChangePaceView extends View{
         //Set as first element and uppercase it
         value = value.toUpperCase();
         
-        switch(value){
-            case "1":
+        int option;
+        try{
+           option = Integer.parseInt(value);
+        }
+        catch (NumberFormatException e){
+            ErrorView.display(this.getClass().getName(), "Your input was not valid: " + e.getMessage());
+            return false;
+        }
+        
+        switch(option){
+            case 1:
                 this.changePaceSteady();
                 break;
                 
-            case "2":
+            case 2:
                 this.changePaceStrenuous();
                 break;
                 
-            case "3":
+            case 3:
                 this.changePaceGruelling();
                 break;    
                 
-            case "C":
+            case 4:
                 this.continueGame();
                 break;
                 
             default:
-              System.out.println("Invalid menu item");
+              ErrorView.display(this.getClass().getName(), "Invalid menu item");
         }
         
         return false;
@@ -64,21 +76,30 @@ public class ChangePaceView extends View{
     }
 
         private void changePaceSteady() {
-            int success = StatusControl.changePace(PaceType.Steady);
-            //TODO: need to return error here
-            System.out.println("The pace has been changed to steady");  
+            try {
+                StatusControl.changePace(PaceType.Steady);
+            } catch (StatusControlException ex) {
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
+            }
+            ErrorView.display(this.getClass().getName(), "The pace has been changed to steady");
         }
 
         private void changePaceStrenuous() {
-            int success = StatusControl.changePace(PaceType.Strenuous);
-            //TODO: need to return error here
-            System.out.println("The pace has been changed to strenuous"); 
+            try {
+                StatusControl.changePace(PaceType.Strenuous);
+            } catch (StatusControlException ex) {
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
+            }
+            ErrorView.display(this.getClass().getName(), "The pace has been changed to strenuous");
         }
 
         private void changePaceGruelling() {
-            int success = StatusControl.changePace(PaceType.Gruelling);
-            //TODO: need to return error here
-            System.out.println("The pace has been changed to gruelling");      
+            try {
+                StatusControl.changePace(PaceType.Gruelling);
+            } catch (StatusControlException ex) {
+                ErrorView.display(this.getClass().getName(), ex.getMessage());
+            }
+            ErrorView.display(this.getClass().getName(), "The pace has been changed to gruelling");   
         }
     
    }
