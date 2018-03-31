@@ -162,14 +162,14 @@ public class GameMenuView extends View{
 
     private void winningView() {
        double possessions = 0.0; 
+       WinningView winView = null;
        try {
            //temporary hard-coding values so that it will somewhat function for now
-           possessions = InventoryControl.calcInventoryValue(OregonTrailGame.getCurrentGame().getMileMarker(), 
-                   InventoryControl.calcSumInventoryBase(20.0, 4.0, 5.0, 4.0, 10.0, 3.0, 15.0, 2.0, 4.0, 4.0, 1.0, 50.0, .5, 120.00));
+           possessions = InventoryControl.calcInventoryValue(OregonTrailGame.getCurrentGame().getMileMarker());
+           winView = new WinningView();
        } catch (InventoryControlException ex) {
            ErrorView.display(this.getClass().getName(), ex.getMessage());
        }
-        WinningView winView = new WinningView(possessions);
         winView.display();
                                 
     }
