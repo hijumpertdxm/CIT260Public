@@ -15,10 +15,8 @@ import oregontrailgame.OregonTrailGame;
  */
 public class WinningView extends View{
     
-    public WinningView() {
-        try {
-    
-     
+    public WinningView() throws InventoryControlException {
+        
         super(
         "\n====================================================="
         +"\n| *************** The Oregon Trail  ***************" 
@@ -29,8 +27,7 @@ public class WinningView extends View{
         +"\nFinal Results:"
         +"\nWagon Members Still Living:     "
         +"\nValue of Remaining Possessions: "+
-                        InventoryControl.calcInventoryValue(OregonTrailGame.getCurrentGame().getMileMarker(),InventoryControl.calcSumInventoryBase(
-                                                    20.0, 4.0, 5.0, 4.0, 10.0, 3.0, 15.0, 2.0, 4.0, 4.0, 1.0, 50.0, .5, 120.00))
+                        InventoryControl.calcInventoryValue(OregonTrailGame.getCurrentGame().getMileMarker())
         +"\nTotal Remaining Cash:           "
         +"\n"
         +"\nProfession Bonus:               "
@@ -41,9 +38,7 @@ public class WinningView extends View{
         +"\n E. Exit the game"        
         +"\n ---- What is your choice?                            "           
         );
-    }
-        catch (InventoryControlException e) {
-        }
+     
 }
 //Second part
 @Override

@@ -22,8 +22,8 @@ public class OregonTrailGame {
         return currentGame;
     }
 
-    public static void setCurrentGame(Game currentGame) {
-        OregonTrailGame.currentGame = currentGame;
+    public static void setCurrentGame(Game game) {
+        OregonTrailGame.currentGame = game;
     }
 
     public static Player getPlayer() {

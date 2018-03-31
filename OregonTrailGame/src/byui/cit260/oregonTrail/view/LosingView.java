@@ -1,3 +1,11 @@
+//I am still having trouble calling the thing I want, and I am not sure if it is how I learned or what, 
+//but my intuition just seems to be wrong. So more work to do on this.
+//Example: I really want to call sumInventoryBase from InventoryControl using something like 
+//“InventoryControl.sumInventoryBase” and it would just give me the number. 
+//Or better yet, just run calcInventoryValue using InventoryControl.calcInventoryValue 
+//and the InventoryControl could automatically go out and pull in all the inputs it needs 
+//from elsewhere using similar language. But that was not where we ended up at all.
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates

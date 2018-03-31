@@ -77,8 +77,7 @@ public class GameControl {
         }
         Game game = new Game();
         game.setPlayer(player);
-        OregonTrailGame.setCurrentGame(game);
-
+       
         Inventory[] items = GameControl.createItems();
         game.setInventory(items);
 
@@ -102,7 +101,7 @@ public class GameControl {
         
         game.setStatus(status);
                 
-        
+        OregonTrailGame.setCurrentGame(game);
     }
 
     public static void progressOneDay(int progress) {
@@ -143,13 +142,13 @@ public class GameControl {
         Inventory itemOne = new Inventory();
         itemOne.setName("Oxen");
         itemOne.setQuantity(0.0);
-        itemOne.setBasePrice(10.0);
+        itemOne.setBasePrice(20.0);
         inventory[ItemType.Oxen.ordinal()] = itemOne;
         
         //Set Food item for the game inventory
         Inventory itemTwo = new Inventory();
         itemTwo.setName("Food (1 pound)");
-        itemTwo.setQuantity(0.0);
+        itemTwo.setQuantity(100.0);
         itemTwo.setBasePrice(1.0);
         inventory[ItemType.Food.ordinal()] = itemTwo;
         
@@ -173,6 +172,7 @@ public class GameControl {
         itemFive.setQuantity(0.0);
         itemFive.setBasePrice(20.0);
         inventory[ItemType.SpareParts.ordinal()] = itemFive;
+        //wheels, axles, tongues, etc.
  
         return inventory;
     }
