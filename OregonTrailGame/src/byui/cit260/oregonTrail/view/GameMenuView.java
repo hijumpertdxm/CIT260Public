@@ -160,18 +160,16 @@ public class GameMenuView extends View{
         stopToRestView.display();
     }
 
-    private void winningView() {
-       double possessions = 0.0; 
+    private void winningView() { 
+       double locationMultiplier = 1.0;
        WinningView winView = null;
        try {
            //temporary hard-coding values so that it will somewhat function for now
-           possessions = InventoryControl.calcInventoryValue(OregonTrailGame.getCurrentGame().getMileMarker());
            winView = new WinningView();
+           winView.display();
        } catch (InventoryControlException ex) {
            ErrorView.display(this.getClass().getName(), ex.getMessage());
-       }
-        winView.display();
-                                
+       }                               
     }
 
     private void hunt() {

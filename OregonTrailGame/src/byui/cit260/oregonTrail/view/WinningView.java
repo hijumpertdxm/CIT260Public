@@ -26,14 +26,15 @@ public class WinningView extends View{
         +"\nfrom Independence, Missouri to Oregon"
         +"\nFinal Results:"
         +"\nWagon Members Still Living:     "
-        +"\nValue of Remaining Possessions: "+
-                        InventoryControl.calcInventoryValue(OregonTrailGame.getCurrentGame().getMileMarker())
+        +"\nValue of Remaining Possessions: "
+//                        + MarkInventoryControl.calcInventoryValue(OregonTrailGame.getCurrentGame().getMileMarker())
         +"\nTotal Remaining Cash:           "
         +"\n"
         +"\nProfession Bonus:               "
         +"\n"
         +"\nFinal Score:                    "    
         +"\n"
+        +"\n P. Print Current Inventory"
         +"\n N. Start a New Game"
         +"\n E. Exit the game"        
         +"\n ---- What is your choice?                            "           
@@ -47,6 +48,9 @@ public class WinningView extends View{
         value = value.toUpperCase();
         
         switch(value){
+            case "P":
+                this.printCurrentInventory();
+                break;
             case "N":
                 this.newGame();
                 break;
@@ -61,14 +65,18 @@ public class WinningView extends View{
         }    
 
     //Third part
+private void printCurrentInventory() {
+    PrintCurrentInventoryView printCurrentInventory = new PrintCurrentInventoryView();
+    printCurrentInventory.display();
+}
 private void newGame() {
-        StartProgramView startProgramView = new StartProgramView();
-        startProgramView.display();
+    StartProgramView startProgramView = new StartProgramView();
+    startProgramView.display();
     }
 
-    private void exitGame() {
-        //Exit 
-        System.exit(0);
+private void exitGame() {
+    //Exit 
+    System.exit(0);
     }
     
 }  

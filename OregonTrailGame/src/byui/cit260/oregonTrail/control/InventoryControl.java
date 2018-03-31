@@ -7,6 +7,8 @@ package byui.cit260.oregonTrail.control;
 import byui.cit260.oregonTrail.exceptions.InventoryControlException;
 import byui.cit260.oregonTrail.model.Game;
 import byui.cit260.oregonTrail.model.Inventory;
+import java.io.IOException;
+import java.io.PrintWriter;
 import oregontrailgame.OregonTrailGame;
 
 /**
@@ -42,6 +44,19 @@ public class InventoryControl {
        
        return total;
     }
+        public static void printCurrentInventory(Inventory[] inventory, String filePath) throws InventoryControlException, IOException{
+        if(filePath == null || filePath.length() < 1){
+            throw new InventoryControlException("You put in an invalid path, please try again.");
+        }
+        
+        PrintWriter printWriter = new PrintWriter(filePath);
+        printWriter.println("List of Inventory");
+        printWriter.println("Name\tQuantity\tBasePrice");
+        for(Inventory i : inventory) {
+           printWriter.println(i.getName() + "\t\t" + i.getQuantity() + "\t\t" + i.getBasePrice());
+       }
+        printWriter.close (); 
+}
 }
        
 //        //Check each item for a value error
