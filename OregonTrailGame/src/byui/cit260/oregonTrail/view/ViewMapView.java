@@ -6,7 +6,7 @@
 package byui.cit260.oregonTrail.view;
 
 import byui.cit260.oregonTrail.control.GameControl;
-import byui.cit260.oregonTrail.model.Location;
+import byui.cit260.oregonTrail.view.PrintMapView;
 import oregontrailgame.OregonTrailGame;
 
 
@@ -23,15 +23,42 @@ public class ViewMapView extends View{
         +"\nViewing the map"
         +"\n====================================================="
         + maps
+        + "\n1: Print the map to a file"
         + "\n\nEnter Q to go back to the game menu"
         +"\n====================================================="
         );
     }
   @Override
     
-    public boolean doAction(String Value){
+    public boolean doAction(String value){
         
-        return true;
+        //Set as first element and uppercase it
+        value = value.toUpperCase();
+        //Convert to Number
+        int option;
+        try{
+            option = Integer.parseInt(value);
+        }
+        catch (NumberFormatException e){
+            ErrorView.display(this.getClass().getName(), "Your input was not valid: " + e.getMessage());
+            return false;
+        }
+        
+        switch(option){
+            case 1:
+                this.printMap();
+                break;
+                
+            default:
+              ErrorView.display(this.getClass().getName(), "Invalid menu item");
+        }
+        
+        return false;
+    }
+
+    private void printMap() {
+        PrintMapView printMap = new PrintMapView();
+        printMap.display();
     }
 
       

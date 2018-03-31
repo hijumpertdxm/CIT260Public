@@ -7,6 +7,8 @@ package byui.cit260.oregonTrail.control;
 
 import byui.cit260.oregonTrail.exceptions.MapControlException;
 import byui.cit260.oregonTrail.model.Location;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  *
@@ -60,6 +62,20 @@ public class MapControl {
             //Need to stub more location setting things here
         }
         return locations;
+    }
+
+    public static void printMap(Location[] map, String filePath) throws MapControlException, IOException{
+        if(filePath == null || filePath.length() < 1){
+            throw new MapControlException("You put in an invalid path, please try again.");
+        }
+        
+        PrintWriter printWriter = new PrintWriter(filePath);
+        printWriter.println("List of Map Locations");
+        printWriter.println("Location Name\tMile Marker\tDate Visited");
+        for(Location loc : map) {
+           printWriter.println(loc.getName() + "\t\t" + loc.getMileMarker() + "\t\t" + loc.getDateVisted());
+       }
+        printWriter.close (); 
     }
     
 }

@@ -18,16 +18,11 @@ import byui.cit260.oregonTrail.model.Status;
 import byui.cit260.oregonTrail.model.Weather;
 import oregontrailgame.OregonTrailGame;
 import byui.cit260.oregonTrail.exceptions.GameControlException;
-import byui.cit260.oregonTrail.view.ErrorView;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
