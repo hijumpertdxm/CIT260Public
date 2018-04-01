@@ -23,6 +23,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 
 /**
  *
@@ -204,5 +205,18 @@ public class GameControl {
         OregonTrailGame.setPlayer(game.getPlayer());
         
     }
+
+    public static void printGame(Game game, String filePath) throws GameControlException, IOException {
+      if(filePath == null || filePath.length() < 1){
+            throw new GameControlException("You put in an invalid path, please try again.");
+        }
+        
+        PrintWriter printWriter = new PrintWriter(filePath);
+        printWriter.println("List of Game object");
+        printWriter.println("Item Name\tQuantity\tBase Price");
+        for(Inventory gam : game.getInventory()) {
+           printWriter.println(gam.getName() + "\t\t" + gam.getQuantity() + "\t\t" + gam.getBasePrice());
+       }
+        printWriter.close (); }
     
 }

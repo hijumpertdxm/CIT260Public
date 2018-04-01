@@ -1,0 +1,7 @@
+List of Game object
+Item Name	Quantity	Base Price
+Oxen		0.0		20.0
+Food (1 pound)		100.0		1.0
+Clothing		0.0		5.0
+Ammunition		0.0		1.0
+Spare Parts		0.0		20.0

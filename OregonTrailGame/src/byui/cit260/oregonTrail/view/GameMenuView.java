@@ -43,6 +43,7 @@ public class GameMenuView extends View{
         +"\n9. Occupation Set" 
         +"\n10. Wagon Party Set"
         +"\n11. Save the game"
+        +"\n12. Print Game"        
         +"\nQ. Quit"
         +"\n----What is your choice?"
         +"\n====================================================="
@@ -107,6 +108,9 @@ public class GameMenuView extends View{
                 
             case 11:
                 this.saveGame();
+                break;
+            case 12:
+                this.printGame();
                 break;
                 
             default:
@@ -190,5 +194,9 @@ public class GameMenuView extends View{
         SaveGameView saveView = new SaveGameView();
         saveView.display();
     }
+
+    private void printGame() {
+        PrintGameView PrintView = new PrintGameView();
+        PrintView.display();  }
     
 }
