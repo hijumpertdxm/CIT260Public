@@ -44,6 +44,8 @@ public class GameMenuView extends View{
         +"\n10. Wagon Party Set"
         +"\n11. Save the game"
         +"\n12. Print Game"        
+                
+        +"\n13. Print party members"        
         +"\nQ. Quit"
         +"\n----What is your choice?"
         +"\n====================================================="
@@ -112,6 +114,14 @@ public class GameMenuView extends View{
             case 12:
                 this.printGame();
                 break;
+                
+                
+                
+                
+            case 13:
+                this.printPlayer();
+                break;    
+                
                 
             default:
               ErrorView.display(this.getClass().getName(), "Invalid menu item");
@@ -198,5 +208,13 @@ public class GameMenuView extends View{
     private void printGame() {
         PrintGameView PrintView = new PrintGameView();
         PrintView.display();  }
+    
+    
+    
+    
+   private void printPlayer() {
+        PrintPlayerView printPlayer = new PrintPlayerView();
+        printPlayer.display();
+    }
     
 }
