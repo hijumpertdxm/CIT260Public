@@ -5,9 +5,13 @@
  */
 package byui.cit260.oregonTrail.control;
 
+import byui.cit260.oregonTrail.exceptions.MapControlException;
 import byui.cit260.oregonTrail.exceptions.PlayerControlException;
+import byui.cit260.oregonTrail.model.Location;
 import byui.cit260.oregonTrail.model.Player;
 import oregontrailgame.OregonTrailGame;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  *
@@ -57,6 +61,21 @@ public class PlayerControl {
         
         //return length of party so view layer can loop
         return setMembers;
+    }
+    
+        
+    public static void printPlayer(Player player, String filePath) throws PlayerControlException,IOException {
+     if(filePath == null || filePath.length() < 1){
+            throw new PlayerControlException("You put in an invalid path, please try again.");
+        }
+        
+        PrintWriter printWriter = new PrintWriter(filePath);
+        printWriter.println("Player Information");
+        printWriter.println("Player's Name\tPlayer's Score");
+        for(String play : player.getPartyMemberNames()) {
+           printWriter.println(play + "\t\t" + player.getHighScore());
+       }
+        printWriter.close (); 
     }
     
 }
