@@ -1,7 +1,0 @@
-Player Information
-Player's Name	Player's Score
-null		0.0
-null		0.0
-null		0.0
-null		0.0
-null		0.0
