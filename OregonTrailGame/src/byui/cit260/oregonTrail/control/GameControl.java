@@ -218,5 +218,21 @@ public class GameControl {
            printWriter.println(gam.getName() + "\t\t" + gam.getQuantity() + "\t\t" + gam.getBasePrice());
        }
         printWriter.close (); }
+
+    public static void continueTrail() {
+        Game game = OregonTrailGame.getCurrentGame();
+        double mileMarker = 0.0;
+        if(game.getStatus().getPace() == PaceType.Steady){
+            mileMarker += 1;
+        }
+        if(game.getStatus().getPace() == PaceType.Strenuous){
+            mileMarker += 2;
+        }
+        if(game.getStatus().getPace() == PaceType.Gruelling){
+            mileMarker += 3;
+        }
+        game.setMileMarker(mileMarker);
+        System.out.println("You went " + mileMarker + " miles.");
+    }
     
 }

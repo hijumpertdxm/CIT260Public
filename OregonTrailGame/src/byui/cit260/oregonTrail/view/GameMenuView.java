@@ -5,6 +5,7 @@
  */
 package byui.cit260.oregonTrail.view;
 
+import byui.cit260.oregonTrail.control.GameControl;
 import byui.cit260.oregonTrail.control.InventoryControl;
 import byui.cit260.oregonTrail.exceptions.InventoryControlException;
 import byui.cit260.oregonTrail.model.Location;
@@ -131,7 +132,7 @@ public class GameMenuView extends View{
     }
 
     private void continueTrail() {
-        System.out.println("continueTrail() was called from the game menu");
+        GameControl.continueTrail();
     }
 
     private void checkSupplies() {
