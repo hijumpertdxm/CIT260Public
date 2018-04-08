@@ -29,7 +29,7 @@ public class PlayerControl {
         
     }
 
-    public static int addPartyMember(String value) throws PlayerControlException {
+    public static void addPartyMember(String value) throws PlayerControlException {
         
         if(value == null || value.length() == 0){
             throw new PlayerControlException("You must enter a name.");
@@ -59,8 +59,6 @@ public class PlayerControl {
         //save change
         player.setPartyMemberNames(partyMemberNames);
         
-        //return length of party so view layer can loop
-        return setMembers;
     }
     
         

@@ -40,9 +40,7 @@ public class GameMenuView extends View{
         +"\n5. Change food rations"
         +"\n6. Stop to rest"
         +"\n7. Hunt"
-        +"\n8. Winning View"   
-        +"\n9. Occupation Set" 
-        +"\n10. Wagon Party Set"
+        +"\n8. Winning View"
         +"\n11. Save the game"
         +"\n12. Print Game"        
                 
@@ -101,23 +99,12 @@ public class GameMenuView extends View{
                 this.winningView();
                 break;
                 
-            case 9:
-                this.occupationView();
-                break;
-                
-            case 10:
-                this.wagonParty();
-                break;
-                
             case 11:
                 this.saveGame();
                 break;
             case 12:
                 this.printGame();
                 break;
-                
-                
-                
                 
             case 13:
                 this.printPlayer();
@@ -192,16 +179,6 @@ public class GameMenuView extends View{
         huntView.display();
     }
 
-    private void occupationView() {
-        ChooseOccupationView occupationView = new ChooseOccupationView();
-        occupationView.display();
-    }
-
-    private void wagonParty() {
-        ChooseWagonPartyView wagonSetView = new ChooseWagonPartyView();
-        wagonSetView.display();
-    }
-
     private void saveGame() {
         SaveGameView saveView = new SaveGameView();
         saveView.display();
@@ -209,10 +186,8 @@ public class GameMenuView extends View{
 
     private void printGame() {
         PrintGameView PrintView = new PrintGameView();
-        PrintView.display();  }
-    
-    
-    
+        PrintView.display();  
+    }
     
    private void printPlayer() {
         PrintPlayerView printPlayer = new PrintPlayerView();

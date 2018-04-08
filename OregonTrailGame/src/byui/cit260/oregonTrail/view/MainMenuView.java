@@ -71,6 +71,15 @@ public class MainMenuView extends View {
             e.printStackTrace();
             return;
         }
+        ChooseOccupationView occupationView = new ChooseOccupationView();
+        occupationView.display();
+        
+        //looping so it displays names as you put them in
+        for(int i=0; i < 5; i++){
+            ChooseWagonPartyView wagonSetView = new ChooseWagonPartyView();
+            wagonSetView.display();
+        }
+        
         GameMenuView gameMenuView = new GameMenuView();
         gameMenuView.display();
     }

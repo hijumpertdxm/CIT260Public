@@ -29,24 +29,18 @@ public class ChooseWagonPartyView extends View{
     @Override
     public boolean doAction(String value){
         
-        int numOfParty = this.setPartyMemberName(value);
-
-        if(numOfParty >= 5){
-            return true;
-        }
+        this.setPartyMemberName(value);
         
-        return false;
+        return true;
     }
 
-    private int setPartyMemberName(String value) {
-        int partyNum = 0;
+    private void setPartyMemberName(String value) {
         try{
-            partyNum = PlayerControl.addPartyMember(value);
+            PlayerControl.addPartyMember(value);
         }
         catch (PlayerControlException e){
             ErrorView.display(this.getClass().getName(), e.getMessage());
         }
-        return partyNum;
     }
 
 }

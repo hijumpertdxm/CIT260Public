@@ -11,8 +11,6 @@ import byui.cit260.oregonTrail.model.Game;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import oregontrailgame.OregonTrailGame;
 
 /**
