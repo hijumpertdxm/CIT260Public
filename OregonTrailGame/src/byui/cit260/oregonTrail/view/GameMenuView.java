@@ -188,7 +188,8 @@ public class GameMenuView extends View{
     }
 
     private void hunt() {
-        System.out.println("The hunt view was called");
+         HuntingView huntView = new HuntingView();
+        huntView.display();
     }
 
     private void occupationView() {

@@ -7,17 +7,15 @@ package byui.cit260.oregonTrail.control;
 import byui.cit260.oregonTrail.exceptions.InventoryControlException;
 import byui.cit260.oregonTrail.model.Game;
 import byui.cit260.oregonTrail.model.Inventory;
-import byui.cit260.oregonTrail.model.ItemType;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Random;
 import oregontrailgame.OregonTrailGame;
 
 /**
  *
  * @author Roller
  */
-public class InventoryControl {
+public class HuntingControl {
     
     public static  double calcInventoryValue(double locationMultiplier) throws InventoryControlException{
         
@@ -59,20 +57,6 @@ public class InventoryControl {
        }
         printWriter.close (); 
 }
-
-    public static void hunting() {
-       Game currentGame = OregonTrailGame.getCurrentGame();
-       
-       Inventory[] inventory = currentGame.getInventory();
-                     
-           Random rand = new Random();     
-           double food = Math.ceil( 50 * rand.nextDouble());
-         for(Inventory i : inventory) {
-             
-          if(i.getName().equals(ItemType.Food.toString()))
-            i.setQuantity(i.getQuantity() + food ); } 
-         System.out.println("you got food " + food );
-    }
 }
        
 //        //Check each item for a value error
