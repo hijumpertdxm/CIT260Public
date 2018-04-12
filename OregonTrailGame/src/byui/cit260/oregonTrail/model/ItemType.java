@@ -11,8 +11,10 @@ package byui.cit260.oregonTrail.model;
  */
 public enum ItemType {
     Oxen,
-    Food,
-    Clothing,
+    Wheels,
+    Axles,
+    Tongues,
+    Clothes,
     Ammunition,
-    SpareParts; 
+    Food;
 }

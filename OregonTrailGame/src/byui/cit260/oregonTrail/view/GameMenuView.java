@@ -8,6 +8,7 @@ package byui.cit260.oregonTrail.view;
 import byui.cit260.oregonTrail.control.GameControl;
 import byui.cit260.oregonTrail.control.InventoryControl;
 import byui.cit260.oregonTrail.exceptions.InventoryControlException;
+import byui.cit260.oregonTrail.model.Inventory;
 import byui.cit260.oregonTrail.model.Location;
 import byui.cit260.oregonTrail.model.PaceType;
 import byui.cit260.oregonTrail.model.RationType;
@@ -124,8 +125,8 @@ public class GameMenuView extends View{
 
     private void checkSupplies() {
         //Go to Check Supplies View
-        CheckSuppliesView checkSuppliesView = new CheckSuppliesView();
-        checkSuppliesView.display();
+          CheckSuppliesView checkSuppliesView = new CheckSuppliesView();
+          checkSuppliesView.display();
     }
 
     private void displayMap() {

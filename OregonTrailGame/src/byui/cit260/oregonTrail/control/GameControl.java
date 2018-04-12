@@ -142,7 +142,7 @@ public class GameControl {
 
     public static Inventory[] createItems() {
         System.out.println("createItems was called in the GameControl");
-        Inventory[] inventory = new Inventory[5];
+        Inventory[] inventory = new Inventory[7];
         
         //Set Oxen item for the game inventory
         Inventory itemOne = new Inventory();
@@ -151,35 +151,51 @@ public class GameControl {
         itemOne.setBasePrice(20.0);
         inventory[ItemType.Oxen.ordinal()] = itemOne;
         
-        //Set Food item for the game inventory
+        //Set Spare Parts item for the game inventory
         Inventory itemTwo = new Inventory();
-        itemTwo.setName("Food (1 pound)");
-        itemTwo.setQuantity(100.0);
-        itemTwo.setBasePrice(1.0);
-        inventory[ItemType.Food.ordinal()] = itemTwo;
-        
-        //Set Clothing item for the game inventory
-        Inventory itemThree = new Inventory();
-        itemThree.setName("Clothing");
-        itemThree.setQuantity(0.0);
-        itemThree.setBasePrice(5.0);
-        inventory[ItemType.Clothing.ordinal()] = itemThree;
-        
-        //Set Ammunition item for the game inventory
-        Inventory itemFour = new Inventory();
-        itemFour.setName("Ammunition");
-        itemFour.setQuantity(0.0);
-        itemFour.setBasePrice(1.0);
-        inventory[ItemType.Ammunition.ordinal()] = itemFour;
+        itemTwo.setName("Wagon Wheels");
+        itemTwo.setQuantity(0.0);
+        itemTwo.setBasePrice(20.0);
+        inventory[ItemType.Wheels.ordinal()] = itemTwo;
+        //wheels, axles, tongues, etc.
         
         //Set Spare Parts item for the game inventory
-        Inventory itemFive = new Inventory();
-        itemFive.setName("Spare Parts");
-        itemFive.setQuantity(0.0);
-        itemFive.setBasePrice(20.0);
-        inventory[ItemType.SpareParts.ordinal()] = itemFive;
+        Inventory itemThree = new Inventory();
+        itemThree.setName("Wagon Axles");
+        itemThree.setQuantity(0.0);
+        itemThree.setBasePrice(10.0);
+        inventory[ItemType.Axles.ordinal()] = itemThree;
         //wheels, axles, tongues, etc.
- 
+        
+        //Set Spare Parts item for the game inventory
+        Inventory itemFour = new Inventory();
+        itemFour.setName("Wagon Tongues");
+        itemFour.setQuantity(0.0);
+        itemFour.setBasePrice(10.0);
+        inventory[ItemType.Tongues.ordinal()] = itemFour;
+        //wheels, axles, tongues, etc.
+      
+        //Set Clothing item for the game inventory
+        Inventory itemFive = new Inventory();
+        itemFive.setName("Clothing");
+        itemFive.setQuantity(0.0);
+        itemFive.setBasePrice(5.0);
+        inventory[ItemType.Clothes.ordinal()] = itemFive;
+        
+        //Set Ammunition item for the game inventory
+        Inventory itemSix = new Inventory();
+        itemSix.setName("Ammunition");
+        itemSix.setQuantity(0.0);
+        itemSix.setBasePrice(1.0);
+        inventory[ItemType.Ammunition.ordinal()] = itemSix;
+        
+        //Set Food item for the game inventory
+        Inventory itemSeven = new Inventory();
+        itemSeven.setName("Food (1 pound)");
+        itemSeven.setQuantity(100.0);
+        itemSeven.setBasePrice(1.0);
+        inventory[ItemType.Food.ordinal()] = itemSeven;
+        
         return inventory;
     }
 

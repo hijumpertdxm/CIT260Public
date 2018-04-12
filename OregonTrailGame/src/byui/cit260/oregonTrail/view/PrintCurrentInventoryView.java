@@ -23,7 +23,7 @@ public class PrintCurrentInventoryView extends View{
         "====================================================="
         +"\nPrinting your Inventory"
         +"\n====================================================="
-        + "\n To print your Inventory, please input a file name path."
+        +"\n To print your Inventory, please input a file name path."
         +"\n====================================================="
         );
     }
@@ -36,7 +36,7 @@ public class PrintCurrentInventoryView extends View{
         try{
             InventoryControl.printCurrentInventory(inventory, filePath);
             this.console.println("The inventory list was saved successfully!");
-        } catch (InventoryControlException | IOException e){
+        } catch (InventoryControlException e){
             ErrorView.display(this.getClass().getName(), "Error: " + e.getMessage());
             return false;
         }

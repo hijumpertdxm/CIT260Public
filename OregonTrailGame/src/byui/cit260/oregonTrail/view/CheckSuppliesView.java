@@ -5,6 +5,9 @@
  */
 package byui.cit260.oregonTrail.view;
 
+import byui.cit260.oregonTrail.model.Inventory;
+import oregontrailgame.OregonTrailGame;
+
 /**
  *
  * @author ayami
@@ -13,19 +16,26 @@ public class CheckSuppliesView extends View{
     
     public CheckSuppliesView() {
       
-        super(
-        "==========The Oregon Trail=========="
-        +"\nThese are your current supplies:"
-        +"\nOxen"
-        +"\nFood"
-        +"\nClothing"
-        +"\nAmmunition"
-        +"\nSpare Parts"
-        +"\n"
-        +"\nC. Continue the game"
-        +"\n-----What is your choice?"
-        +"\n===================================="
-          );
+//        super(
+//        "==========The Oregon Trail=========="
+//        +"\nThese are your current supplies:"
+//        +"\nOxen"
+//        +"\nFood"
+//        +"\nClothing"
+//        +"\nAmmunition"
+//        +"\nSpare Parts"
+//        +"\n"
+//        +"\nC. Continue the game"
+//        +"\n-----What is your choice?"
+//        +"\n===================================="
+//          );
+
+        Inventory[] inventory = OregonTrailGame.getCurrentGame().getInventory();
+        printWriter.println("List of Inventory");
+            printWriter.println("Name\tQuantity");
+            for(Inventory i : inventory) {
+                printWriter.println(i.getName() + "\t\t" + i.getQuantity());
+            }
     }  
        
    @Override

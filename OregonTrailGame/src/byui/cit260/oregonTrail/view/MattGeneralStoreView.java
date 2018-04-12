@@ -13,26 +13,22 @@ public class MattGeneralStoreView extends  View{
     
     public MattGeneralStoreView() {
         
-        super (
+        printWriter.println(
         "\n====================================================="
-        +"\n| ***** The Oregon Trail - Matt's General Store *****" 
+        +"\n ***** The Oregon Trail - Matt's General Store *****" 
         +"\n======================================================"
-        +"\n  Items Name         Price        Quantity       Total"
-        +"\n1. Oxen              $20            0            $0  "
-        +"\n2. Wheels"
-        +"\n3. Axles"
-        +"\n4. Wagon Tongues"
-        +"\n5. Food (1 Puond)    $1             0            $0  "
-        +"\n6. Clothes           $XX            0            $0  "
-        +"\n7. Ammunition        $XX            0            $0  "
-        +"\n8. Food              $XX            0            $0  "
+        +"\n *****   Please select something to purchase   *****"
+        +"\n"
+//        printWriter.println("Item\t\tPrice\t\tTotal");
+//        for(Inventory i : inventory) {
+//           printWriter.println(iNumberforkeyboardentry + "\t\t" i.getName() + "\t\t" + i.currentPrice());
+//      }
         +"\n       Total Bill                                $0  "
         +"\n       Total Funds                               $800"
         +"\n       Total Remaining                           $800"
         +"\nC Continue the game                                  "       
         +"\n ---- What is you choice?                            "           
-        );
-        
+        );     
     }
   @Override
     public boolean doAction(String value){  
@@ -44,19 +40,27 @@ public class MattGeneralStoreView extends  View{
                 this.getOxen();
                 break;
             case "2":
-                this.getFood();
+                this.getWheels();
                 break;
                 
             case "3":
-                this.getClothing();
+                this.getAxles();
                 break;
                 
             case "4":
-                this.getAmmunition();
+                this.getTongues();
                 break;
                 
             case "5":
-                this.getSpareParts();
+                this.getClothes();
+                break;
+                
+            case "6":
+                this.getAmmunition();
+                break;
+                
+            case "7":
+                this.getFood();
                 break;
                 
             case "C":
@@ -73,26 +77,30 @@ public class MattGeneralStoreView extends  View{
         System.out.println("You have selected Oxen");
     }
 
-    private void getFood() {
-       System.out.println("You have selected Food");
+    private void getWheels() {
+        System.out.println("You have selected Wheels");
     }
 
-    private void getClothing() {
+    private void getAxles() {
+        System.out.println("You have selected Axles");
+    }
+
+    private void getTongues() {
+        System.out.println("You have selected Tongues");
+    }
+    
+    private void getClothes() {
        System.out.println("You have selected Clothing");
     }
 
     private void getAmmunition() {
         System.out.println("You have selected Ammunition"); }
-
-    private void getSpareParts() {
-        System.out.println("You have selected Spare Parts");
-    }
+    
+    private void getFood() {
+       System.out.println("You have selected Food");
+    }    
 
     private void getContinue() {
         System.out.println("continueTrail() was called from the game menu");
     }
-        
 }    
-            
-                
-  
